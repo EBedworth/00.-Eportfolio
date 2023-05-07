@@ -1,0 +1,241 @@
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>E-Portfolio | About Me</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../../assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="../../assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1><a href="../../index.html">E-Portfolio | <span style="color: #9ed0ff">Elliot Bedworth</span></a></h1>
+						<nav>
+							<a href="#menu">Menu</a>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<div class="inner">
+							<h2>Menu</h2>
+							<ul class="links">
+								<li><a href="../../index.html">Home</a></li>
+								<li><a href="../../about.html">About Me</a></li>
+								<li><a href="../../my-work.html">My Work</a></li>
+								<li><a href="../../journal.html">Journal</a></li>
+							</ul>
+							<a href="#" class="close">Close</a>
+						</div>
+					</nav>
+
+				<!-- Wrapper -->
+					<section id="wrapper">
+						<header>
+							<div class="inner">
+								<h2>Creating the E-Portfolio</h2>
+
+                                <p>One the first tasks assigned in Unit 1 of Launching into Computer Science is to create the e-portfolio site. The purpose of the 
+                                    e-portfolio is to store and showcase the student's work completed throughout the course. 
+                                </p>
+
+                                <p>It is mandated that the e-portfolio will be created on GitHub, using the Pages feature. I have some familiarity with GitHub already, 
+                                    but Pages was new to me. I followed the instructions provided in the Virtual Learning Environment to set up my site. 
+                                </p>
+							</div>
+						</header>
+
+						<!-- Content -->
+							<div class="wrapper">
+								<div class="inner">
+
+
+									<h3 class="major">Choosing a Template</h3>
+
+									<p>I spent a long time choosing the base template for my site. In the VLE guide, the site <a href="http://html5up.net" target="_blank">HTML5 UP</a>
+                                        is recommended. They have some really high quality templates available there, and they are all on Creative Commons licensing, meaning they 
+                                        can be used for most purposes as long as the original creator is credited. I spent a long time looking through this site and others, 
+                                        because I wanted to avoid selecting a template that many other students would also choose. However, after running through many sites
+                                        which claimed they had free templates, but eventually asked for payment, I selected a template from HTML5 UP.  
+                                    </p>
+									<div class="box alt">
+										<div class="row gtr-uniform">
+											<div class="col-12"><span class="image fit"><img src="../../images/module-img/launching-into-cs/html5up.jpg" alt="" /></span></div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                            <div class="wrapper alt style2">
+								<div class="inner">
+
+									<h3 class="major">Modifying the Template</h3>
+
+                                    <p>After choosing a template, I needed to upload the source code to my GitHub account and enable the Pages feature to use the template. 
+                                        The guide in the VLE made this process quite easy. Once uploaded, I could navigate to the URL generated in the repository settings 
+                                        and see my new site running. I now needed to get to work modifying the content of the site to change it from a template to my e-portfolio. 
+                                    </p>
+
+                                    <p>I maybe hadn't appreciated the scale of this task. The template is, of course, a combination of HTML, CSS and JavaScript, and there was <b>a 
+                                        lot</b> of content which needed to change. I have had some exposure to HTML and CSS previously through taking introductory web design courses
+                                        online, so this was at least slightly familiar. To work on the changes, I decided to use VSCode. I have been using VSCode for last few months,
+                                        on various tutorials and courses, so I am familiar with the environment. I also find VSCode to be very versatile and intuitive, and the
+                                        extensions for linking directly to GitHub make source control very easy. Saying that, I encountered a problem immediately when trying to 
+                                        synchronise with the e-portfolio repository and my local machine. Because I had another GitHub account connected previously, I was unable 
+                                        to access the e-portfolio repository to commit changes. I ended up having to go into Credential Manager in Windows, select the 'Windows Credentials'
+                                        option, and modify the entry under 'git:https://github.com'. 
+                                    </p>
+
+                                    <p>Once I had the repository open in VSCode, I set about looking through what I had available for me to work from. In the provided template, 
+                                        there was a page containing a number of elements, presumably for use within the site. There was also an example page containing a sample
+                                        article that might represent a page on the final site. I could understand broadly the HTML layout and the CSS references, although the 
+                                        JavaScript was somewhat of a mystery. I looked through that anyway, even though most of the JavaScript files had minified, meaning it was
+                                        very unpleasant to look at. After understanding what I could about the content and file structure already in place, I decided to start 
+                                        simple and create the pages that I would need for my e-portfolio as blank .html files in the root of the file structure. I then started
+                                        with the index page, modifying the menu entries to link to my pages. I also (embarrasingly) spent around an hour trying to change the small 
+                                        icon above the title on the index page from a diamond into a 'code' icon (&lt;/>). The icons had been included from a web font package from 
+                                        <a href="https://fontawesome.com/" target="_blank">fontawesome.com</a>, which is where I had managed to find the code icon. However, 
+                                        when trying to change the reference from the diamond to the code icon, the circle would appear empty. In the end, it turned out that the
+                                        icons were grouped into different .svg files, and I needed to use an icon that was within the same .svg as the diamond. This can be seen
+                                        inside the assets/webfonts folder, where there are three .svg files each containing a selection of icons. I assume there are differences 
+                                        in size, layout or structure which prevent some icons from fitting in the space I was trying to fill. In the end, I selected the 
+                                        paper-with-code-icon that you can see on the home page.
+                                    </p>
+
+                                    <p>Once I was happy with the index page, I used the code here as a template for the About Me page. This page took a long time to complete, 
+                                        because of the volume of content, but as this only needs to be completed once, it seemed worthwhile doing it properly now. After
+                                        finishing the text, I decided that I wanted to have the background change for different sections, as it looked a bit too solid 
+                                        compared to the theme of the site. The structure in the template creates new wrappers for certain sections, like the header and footer, 
+                                        but not for the body, so I had to experiment a little with the CSS references to find one that looked correct. The result can be seen
+                                        at the 'Studying and Future Aspirations' section of the About Me page.
+                                    </p>
+
+                                    <p>
+                                        I wanted to make the My Work page visually different from the About Me page, as I was conscious of the site looking a bit boring. I 
+                                        decided to use an image grid to link to individual modules: 
+                                    </p>
+
+                                    <div class="box alt">
+										<div class="row gtr-uniform">
+											<div class="col-12"><span class="image fit"><img src="../../images/module-img/launching-into-cs/image-grid.jpg" alt="" /></span></div>
+                                        </div>
+                                    </div>
+
+                                    <p>
+                                        I may try to find more suitable images in the future. These have been created by me overlaying some text over the sample pictures 
+                                        which came with the template. For now, I think this looks better than just another list (there are some more lists to come).
+                                    </p>
+
+                                    <p>I had already thought about and decided that the pages which linked to articles (such as examples of work or journal entries) should 
+                                        show the available items in a list. I made this decision because although lists are rarely visually pleasing, I intended to have 
+                                        a large amount of this kind of content on the site, and I wanted to make it easy to navigate to the item which the user wanted to look 
+                                        at. I think if I had used some kind of image grid for this, it would make that navigation a bit laborious. Having the items in a list
+                                        would also make it easier for me to add new items, as I can simply add a new line to the list rather than having to find an image, change
+                                        the size of the image grid and so on. There were also two tables included in the elements page of the template, which presented a list 
+                                        in an easy to view and use format. I decided to use one of these for the module pages and the journal main page. I also created folders 
+                                        to store these pages in, rather than storing them at the root of the file structure. I made this decision because again, there will end up 
+                                        being a large number of these pages, so it makes sense to have them organised to some degree. The trade-off here is that I had to change
+                                        the filepath for any links from these pages, as they no longer reside in the same folder as the other pages. This, however, is also something
+                                        that only really needed to be done once, so long as I use the code from these pages as a template for future pages in the same folder. 
+                                        Finally, I decided to make the links to the artefacts and journal pages open in a new tab, rather than the same window, which felt 
+                                        better to me when navigating around. I went back and changed the links in the footer to my LinkedIn page to do this too.                              
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="wrapper">
+								<div class="inner">
+
+                                    <h3 class="major">#TODO</h3>
+
+                                    <p>I am happy at this stage, in week 1, with how my e-portfolio looks. However, whilst working on it, I considered some further things I 
+                                        would like to achieve during my progression through the course.
+                                    </p>
+
+                                    <h4>Not use a template</h4>
+
+                                    <p>Whilst the templates on HTML5 UP are really high quality, and I am happy with how this one looks, I would like to build my own site 
+                                        without using a template from somebody else. This will require a lot of work, so I expect it to be a ongoing task that I can work on 
+                                        when I get the opportunity. It would be a good personal achievement to have built something completely myself though, as opposed 
+                                        to using the work of somebody else. 
+                                    </p>
+
+                                    <h4>Dynamic Pages</h4>
+
+                                    <p>There are going to end up being a significant amount of pages for journal entries and artefacts. In the current site, each 
+                                        one of these pages will need to be a new .html file which is configured manually with links and references. I feel as though there 
+                                        probably is already some method of dynamising these pages, by having a single template page and then populating the template fields
+                                        from a database, based on which link is clicked. I'm certain many web pages already work like this, but I haven't researched this 
+                                        myself yet. I think this would be worthwhile for making a more modular site. 
+                                    </p>
+
+                                    <h4>Add more images</h4>
+
+                                    <p>I'm acutely aware that the site is slightly boring, and made up almost entirely of text. I will endeavour to add more images throughout 
+                                        as I'm adding content. 
+                                    </p>
+
+					</section>
+
+				<!-- Footer -->
+				<section id="footer">
+					<div class="inner">
+						<h2 class="major">Get in touch</h2>
+						<p>If you wish to contact me regarding any of the information on this site, please use one of the methods below.</p>
+						<form method="post" action="#">
+							<div class="fields">
+								<div class="field">
+									<label for="name">Name</label>
+									<input type="text" name="name" id="name" />
+								</div>
+								<div class="field">
+									<label for="email">Email</label>
+									<input type="email" name="email" id="email" />
+								</div>
+								<div class="field">
+									<label for="message">Message</label>
+									<textarea name="message" id="message" rows="4"></textarea>
+								</div>
+							</div>
+							<ul class="actions">
+								<li><input type="submit" value="Send Message"/></li>
+							</ul>
+						</form>
+						<ul class="contact">
+							<li class="icon solid fa-home">
+								Chelmsford<br />
+								United Kingdom<br />
+							</li>
+							<li class="icon solid fa-envelope"><a href="mailto:eb23659@essex.ac.uk">eb23659@essex.ac.uk</a></li>
+							<li class="icon brands fa-linkedin"><a href="https://www.linkedin.com/in/elliot-bedworth/" target="_blank">https://www.linkedin.com/in/elliot-bedworth/</a></li>
+						</ul>
+						<ul class="copyright">
+							<li>&copy; All rights reserved.</li><li>Design: <a href="http://html5up.net" target="_blank">HTML5 UP</a></li>
+						</ul>
+					</div>
+				</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="../../assets/js/jquery.min.js"></script>
+			<script src="../../assets/js/jquery.scrollex.min.js"></script>
+			<script src="../../assets/js/browser.min.js"></script>
+			<script src="../../assets/js/breakpoints.min.js"></script>
+			<script src="../../assets/js/util.js"></script>
+			<script src="../../assets/js/main.js"></script>
+
+	</body>
+</html>
