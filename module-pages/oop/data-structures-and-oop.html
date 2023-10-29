@@ -1,0 +1,150 @@
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>E-Portfolio | Data Structures and Object-Oriented Programming</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../../assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="../../assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1><a href="../../index.html">E-Portfolio | <span style="color: #9ed0ff">Elliot Bedworth</span></a></h1>
+						<nav>
+							<a href="#menu">Menu</a>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<div class="inner">
+							<h2>Menu</h2>
+							<ul class="links">
+								<li><a href="../../index.html">Home</a></li>
+								<li><a href="../../about.html">About Me</a></li>
+								<li><a href="../../my-work.html">My Work</a></li>
+								<li><a href="../../journal.html">Journal</a></li>
+							</ul>
+							<a href="#" class="close">Close</a>
+						</div>
+					</nav>
+
+				<!-- Wrapper -->
+					<section id="wrapper">
+						<header>
+							<div class="inner">
+								<h2>How do data structures support object-oriented programming?</h2>
+							</div>
+						</header>
+
+						<!-- Content -->
+							<div class="wrapper">
+								<div class="inner">
+
+                                    <h3 class="major">Python Data Types and OOP</h3>
+
+									<p>
+                                        The Python programming language provides some special built-in data types beyond the more 'standard' types which we frequently encounter 
+                                        in other languages. Four of these structures in particular can be considered as functionally distinct from each other:
+                                        <ol>
+                                            <li>List</li>
+                                            <li>Tuple</li>
+                                            <li>Dictionary</li>
+                                            <li>Set</li>
+                                        </ol>
+                                        The inclusion of such data types can appear, at least instinctively, to be a reason for object-oriented programming to be <i>less</i> 
+                                        necessary, due to the functionality which is achievable through their inclusion. However, these data structures and others, both built in 
+                                        and within modules, actually support the development of object-oriented software. 
+                                    </p>
+                                    <p>
+                                        The first way in which these data structures support object-oriented programming is by providing the ability to use objects within the 
+                                        context of each of the structures. To provide an example of this point, lists, sets, tuples and dictionaries (values, not keys) can all 
+                                        be class objects. In some instances, some additional configuration of the classes is required (e.g. for sets), however, creating a list 
+                                        of class objects can be done straight out of the box. This functionality only extends the possibility of what can be done with class 
+                                        objects, and supports object-oriented programming. 
+                                    </p>
+                                    <p>
+                                        In addition to this, the built-in data types listed above operate in a very object-oriented way themselves. Where we create classes,  
+                                        instantiate objects from those classes and then manipulate data by using methods and attributes of the class in the context of our object, 
+                                        the Python data structures allow us to use methods and access attributes in the same way. If we consider the dictionary method pop(), the 
+                                        syntax for using the method would be <code>myDictionary.pop(some_key)</code>. We can see the similarity here to our own object oriented 
+                                        syntax, where we follow the structure <code>myObject.method(data)</code>. The similarties here are such that the lines begin to blur 
+                                        between built-in data structures and our own user-defined classes, further supporting use of an object-oriented approach.
+                                    </p>
+                                    <p>
+                                        Finally, we should consider the combination of the above and the powerful functionality which is possible when using user-defined classes
+                                        with built-in data types. Comprehensions allow very succinct program development, maintaining human readability and flexibility whilst 
+                                        also manipulating data effectively. Through comprehensions, we can very efficiently combine built-in data structures with our user-defined 
+                                        classes to develop software which is again flexible and effective. 
+                                    </p>
+                                    <p>
+                                        Although at first glance, it may appear that Python data structures reduce the need for developers to use an object-oriented approach, when 
+                                        we reflect on how the data structures interact with user-defined classes, we see that the opposite is true. Not only do these data structures
+                                        work with other objects, they are actually types of object themselves. Through the combination of using these data types with our own user-defined
+                                        objects, our options for development are greatly increased. 
+                                    </p>
+                                </div>
+                            </div>
+
+					</section>
+
+				<!-- Footer -->
+				<section id="footer">
+					<div class="inner">
+						<h2 class="major">Get in touch</h2>
+						<p>If you wish to contact me regarding any of the information on this site, please use one of the methods below.</p>
+						<form method="post" action="#">
+							<div class="fields">
+								<div class="field">
+									<label for="name">Name</label>
+									<input type="text" name="name" id="name" />
+								</div>
+								<div class="field">
+									<label for="email">Email</label>
+									<input type="email" name="email" id="email" />
+								</div>
+								<div class="field">
+									<label for="message">Message</label>
+									<textarea name="message" id="message" rows="4"></textarea>
+								</div>
+							</div>
+							<ul class="actions">
+								<li><input type="submit" value="Send Message"/></li>
+							</ul>
+						</form>
+						<ul class="contact">
+							<li class="icon solid fa-home">
+								Chelmsford<br />
+								United Kingdom<br />
+							</li>
+							<li class="icon solid fa-envelope"><a href="mailto:eb23659@essex.ac.uk">eb23659@essex.ac.uk</a></li>
+							<li class="icon brands fa-linkedin"><a href="https://www.linkedin.com/in/elliot-bedworth/" target="_blank">https://www.linkedin.com/in/elliot-bedworth/</a></li>
+						</ul>
+						<ul class="copyright">
+							<li>&copy; All rights reserved.</li><li>Design: <a href="http://html5up.net" target="_blank">HTML5 UP</a></li>
+						</ul>
+					</div>
+				</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="../../assets/js/jquery.min.js"></script>
+			<script src="../../assets/js/jquery.scrollex.min.js"></script>
+			<script src="../../assets/js/browser.min.js"></script>
+			<script src="../../assets/js/breakpoints.min.js"></script>
+			<script src="../../assets/js/util.js"></script>
+			<script src="../../assets/js/main.js"></script>
+
+	</body>
+</html>
