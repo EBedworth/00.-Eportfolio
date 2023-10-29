@@ -1,0 +1,268 @@
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>E-Portfolio | Polymorphism</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../../assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="../../assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1><a href="../../index.html">E-Portfolio | <span style="color: #9ed0ff">Elliot Bedworth</span></a></h1>
+						<nav>
+							<a href="#menu">Menu</a>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<div class="inner">
+							<h2>Menu</h2>
+							<ul class="links">
+								<li><a href="../../index.html">Home</a></li>
+								<li><a href="../../about.html">About Me</a></li>
+								<li><a href="../../my-work.html">My Work</a></li>
+								<li><a href="../../journal.html">Journal</a></li>
+							</ul>
+							<a href="#" class="close">Close</a>
+						</div>
+					</nav>
+
+				<!-- Wrapper -->
+					<section id="wrapper">
+						<header>
+							<div class="inner">
+								<h2>Polymorphism</h2>
+							</div>
+						</header>
+
+						<!-- Content -->
+							<div class="wrapper">
+								<div class="inner">
+
+
+									<h3 class="major">Task</h3>
+
+									<p>In Unit 5, we were tasked with developing a Python program which showed an example of polymorphism. This program should be 
+                                        applicable to the software we develop for the self-driving car, which makes up part of the assessed work for this module. 
+                                    </p>
+                                    <p>
+                                        The software which I developed uses two classes. 'Location' is a class which is used to store some global location, with GPS coordinates. 
+                                        The objects it creates are changeable and so the 'latitude' and 'longitude' attributes have both getters and setters. An example 
+                                        of using a Location object may be for when a user wishes to select a destination for their navigation system. The Location object will 
+                                        be created, but may be changed at any time along the route, should the user remember they actually need to stop off at the shops on 
+                                        their way home.  
+                                    </p>
+                                    <p>
+                                        The second class is 'GPS'. This creates a GPS object which, in real life, would take readings from some GPS system within the vehicle and 
+                                        return the current GPS coordinates. The latitude and longitude values in the GPS object are not changeable, so no setters are provided. In 
+                                        the example which I created, I have used the python random module to generate values for the GPS object's latitude and longitude. This 
+                                        simulates the real positional data which would otherwise be provided. 
+                                    </p>
+                                    <p>
+                                        Both classes have the 'calculateDist' method, which calculates the distance between two sets of GPS coordinates. In this case, the first 
+                                        set of coordinates is always that of the object for which the calculateDist method is being called. calculateDist performs a check on 
+                                        the other object, to look for the attributes 'latitude' and 'longitude' and, when present, returns the distance between those objects 
+                                        in miles. 
+                                    </p>
+                                    <p>
+                                        Although this is a simple example of polymorphism, I believe it shows how powerful of a tool it is. In future developments, should other 
+                                        classes require use of the latitude and longitude attributes, they will also be able to use the calculateDist method without any significant
+                                        changes. The calculateDist method could be removed from the classes entirely, and used purely as an external function (which accepts two 
+                                        arguments instead of one) in order to reduce code reuse. As either a function or a method, this could be further expanded by accepting a tuple
+                                        as input, or even individual float values, or strings. Through the use of polymorphism, we can see the potential for programs to become 
+                                        very flexible and robust at the same time. 
+                                    </p>
+                                    <p>
+                                        The code for this program can be seen below.
+                                    </p>
+
+                                    <h4>Code</h4>
+										<pre><code>"""Polymorphism program for use in self-driving car. 
+"""
+
+import random
+from math import radians, cos, sin, asin, sqrt
+
+class Location:
+    """A specific location with GPS coordinates
+    """
+    def __init__(self, latitude, longitude):
+        self._latitude = latitude
+        self._longitude = longitude
+
+    def __repr__(self) -> str:
+        return f"{self.latitude}, {self.longitude}"
+
+    def __str__(self) -> str:
+        return f"{self.latitude}, {self.longitude}"
+
+    @property
+    def latitude(self):
+        return self._latitude
+    
+    @latitude.setter
+    def latitude(self, newLat):
+        if type(newLat) == float:
+            self._latitude = newLat
+
+    @property
+    def longitude(self):
+        return self._longitude
+    
+    @longitude.setter
+    def longitude(self, newLong):
+        if type(newLong) == float:
+            self._longitude = newLong
+
+    # Calculate distance between two GPS locations credited to 
+    # https://www.geeksforgeeks.org/program-distance-two-points-earth/
+    def calculateDist(self, location):
+        # Check for attributes
+        if hasattr(location, "latitude") and hasattr(location, "longitude"):
+            lon1 = radians(self.longitude)
+            lon2 = radians(location.longitude)
+            lat1 = radians(self.latitude)
+            lat2 = radians(location.latitude)
+        
+            # Haversine formula 
+            dlon = lon2 - lon1 
+            dlat = lat2 - lat1
+            a = sin(dlat / 2)**2 + cos(lat1) * cos(lat2) * sin(dlon / 2)**2
+        
+            c = 2 * asin(sqrt(a)) 
+            
+            # Radius of earth in miles
+            r = 3956
+            
+            # calculate the result
+            return(round((c * r), 3))
+
+
+class GPS:
+    """A GPS system which generates a geographical location
+    """
+    def __init__(self):
+        self._latitude = random.uniform(-90.0000, 90.0000)
+        self._longitude = random.uniform(-180.0000, 180.0000)
+
+    def __repr__(self) -> str:
+        return f"{self.latitude}, {self.longitude}"
+    
+    def __str__(self) -> str:
+        return f"{self.latitude}, {self.longitude}"
+
+    @property
+    def latitude(self):
+        return self._latitude
+    
+    @property
+    def longitude(self):
+        return self._longitude
+    
+    def calculateDist(self, location):
+    # Check for attributes
+        if hasattr(location, "latitude") and hasattr(location, "longitude"):
+            lon1 = radians(self.longitude)
+            lon2 = radians(location.longitude)
+            lat1 = radians(self.latitude)
+            lat2 = radians(location.latitude)
+        
+            # Haversine formula 
+            dlon = lon2 - lon1 
+            dlat = lat2 - lat1
+            a = sin(dlat / 2)**2 + cos(lat1) * cos(lat2) * sin(dlon / 2)**2
+        
+            c = 2 * asin(sqrt(a)) 
+            
+            # Radius of earth in miles
+            r = 3956
+            
+            # calculate the result
+            return(round((c * r), 3))
+    
+
+location1 = Location(15.2565, -12.6845)
+location2 = Location(1.0563, 5.2885)
+gps1 = GPS()
+
+print(gps1)
+print(location1)
+print(location2)
+
+# Confirm method works
+print(location1.calculateDist(location2), " miles")
+
+# Confirm polymorphism works
+print(location1.calculateDist(gps1), " miles")
+                                            
+                                                    
+                                        </code></pre>
+									
+
+                                </div>
+                            </div>
+
+					</section>
+
+				<!-- Footer -->
+				<section id="footer">
+					<div class="inner">
+						<h2 class="major">Get in touch</h2>
+						<p>If you wish to contact me regarding any of the information on this site, please use one of the methods below.</p>
+						<form method="post" action="#">
+							<div class="fields">
+								<div class="field">
+									<label for="name">Name</label>
+									<input type="text" name="name" id="name" />
+								</div>
+								<div class="field">
+									<label for="email">Email</label>
+									<input type="email" name="email" id="email" />
+								</div>
+								<div class="field">
+									<label for="message">Message</label>
+									<textarea name="message" id="message" rows="4"></textarea>
+								</div>
+							</div>
+							<ul class="actions">
+								<li><input type="submit" value="Send Message"/></li>
+							</ul>
+						</form>
+						<ul class="contact">
+							<li class="icon solid fa-home">
+								Chelmsford<br />
+								United Kingdom<br />
+							</li>
+							<li class="icon solid fa-envelope"><a href="mailto:eb23659@essex.ac.uk">eb23659@essex.ac.uk</a></li>
+							<li class="icon brands fa-linkedin"><a href="https://www.linkedin.com/in/elliot-bedworth/" target="_blank">https://www.linkedin.com/in/elliot-bedworth/</a></li>
+						</ul>
+						<ul class="copyright">
+							<li>&copy; All rights reserved.</li><li>Design: <a href="http://html5up.net" target="_blank">HTML5 UP</a></li>
+						</ul>
+					</div>
+				</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="../../assets/js/jquery.min.js"></script>
+			<script src="../../assets/js/jquery.scrollex.min.js"></script>
+			<script src="../../assets/js/browser.min.js"></script>
+			<script src="../../assets/js/breakpoints.min.js"></script>
+			<script src="../../assets/js/util.js"></script>
+			<script src="../../assets/js/main.js"></script>
+
+	</body>
+</html>

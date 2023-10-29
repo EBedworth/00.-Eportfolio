@@ -1,0 +1,162 @@
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>E-Portfolio | Protected and Unprotected Variables</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../../assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="../../assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1><a href="../../index.html">E-Portfolio | <span style="color: #9ed0ff">Elliot Bedworth</span></a></h1>
+						<nav>
+							<a href="#menu">Menu</a>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<div class="inner">
+							<h2>Menu</h2>
+							<ul class="links">
+								<li><a href="../../index.html">Home</a></li>
+								<li><a href="../../about.html">About Me</a></li>
+								<li><a href="../../my-work.html">My Work</a></li>
+								<li><a href="../../journal.html">Journal</a></li>
+							</ul>
+							<a href="#" class="close">Close</a>
+						</div>
+					</nav>
+
+				<!-- Wrapper -->
+					<section id="wrapper">
+						<header>
+							<div class="inner">
+								<h2>Protected and Unprotected Variables</h2>
+							</div>
+						</header>
+
+						<!-- Content -->
+							<div class="wrapper">
+								<div class="inner">
+
+
+									<h3 class="major">Task</h3>
+
+									<p>In Unit 1, we were tasked with developing a Python program including the use of protected and unprotected variables, a subject which 
+                                        had featured in our reading for this week. In addition to this, for Unit 2 we were asked to create a Python program which included 
+                                        employee-related functionality, such as tracking employee details and allowing an employee to book a day of annual leave. 
+                                        <br>
+                                        <br>
+                                        My program allows storage of employee name, employee number, salary and amount of annual leave within an 'Employee' object. This class 
+                                        also contains methods to change the salary (as salary is a protected variable), return the monthly pay of an employee and book a given 
+                                        number of days of annual leave. In the program, I included some example code for interacting with the 'Employee' object, including 
+                                        a requirement for user input when selecting how many days of annual leave to book. 
+
+                                        The code for my program can be seen below.
+                                    </p>
+
+                                    <h4>Code</h4>
+										<pre><code>class Employee:
+    """Represents an employee.
+
+    attributes: name, employee number, salary, annual leave
+    """
+
+    def __init__(self, name, employeeNum, salary, annualLeave=25):
+        self.name = name
+        self.employeeNum = employeeNum
+        self._salary = salary
+        self._annualLeave = annualLeave
+
+    def change_salary(self, newSal):
+        self._salary = newSal
+
+    def monthly_pay(self):
+        return self._salary / 12
+        
+    def book_holiday(self, holidayLength):
+        if holidayLength > self._annualLeave:
+            print("You do not have enough annual leave remaining.")
+        else:
+            self._annualLeave = self._annualLeave - holidayLength
+            print("Leave booked!")
+
+
+e1 = Employee("John Smith", 215180452, 25000, 25)
+print(e1._salary)
+e1._salary = 30000
+print(e1._salary)
+print(f"You have {e1._annualLeave} days holiday remaining.")
+holiday = int(input("Please enter the number of days to book: "))
+e1.book_holiday(holiday)
+print(f"You have {e1._annualLeave} days holiday remaining.")
+                                        </code></pre>
+									
+
+                                </div>
+                            </div>
+
+					</section>
+
+				<!-- Footer -->
+				<section id="footer">
+					<div class="inner">
+						<h2 class="major">Get in touch</h2>
+						<p>If you wish to contact me regarding any of the information on this site, please use one of the methods below.</p>
+						<form method="post" action="#">
+							<div class="fields">
+								<div class="field">
+									<label for="name">Name</label>
+									<input type="text" name="name" id="name" />
+								</div>
+								<div class="field">
+									<label for="email">Email</label>
+									<input type="email" name="email" id="email" />
+								</div>
+								<div class="field">
+									<label for="message">Message</label>
+									<textarea name="message" id="message" rows="4"></textarea>
+								</div>
+							</div>
+							<ul class="actions">
+								<li><input type="submit" value="Send Message"/></li>
+							</ul>
+						</form>
+						<ul class="contact">
+							<li class="icon solid fa-home">
+								Chelmsford<br />
+								United Kingdom<br />
+							</li>
+							<li class="icon solid fa-envelope"><a href="mailto:eb23659@essex.ac.uk">eb23659@essex.ac.uk</a></li>
+							<li class="icon brands fa-linkedin"><a href="https://www.linkedin.com/in/elliot-bedworth/" target="_blank">https://www.linkedin.com/in/elliot-bedworth/</a></li>
+						</ul>
+						<ul class="copyright">
+							<li>&copy; All rights reserved.</li><li>Design: <a href="http://html5up.net" target="_blank">HTML5 UP</a></li>
+						</ul>
+					</div>
+				</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="../../assets/js/jquery.min.js"></script>
+			<script src="../../assets/js/jquery.scrollex.min.js"></script>
+			<script src="../../assets/js/browser.min.js"></script>
+			<script src="../../assets/js/breakpoints.min.js"></script>
+			<script src="../../assets/js/util.js"></script>
+			<script src="../../assets/js/main.js"></script>
+
+	</body>
+</html>

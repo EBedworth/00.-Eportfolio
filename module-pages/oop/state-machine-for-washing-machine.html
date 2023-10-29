@@ -1,0 +1,159 @@
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>E-Portfolio | State Machine Diagram for Washing Machine</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../../assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="../../assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1><a href="../../index.html">E-Portfolio | <span style="color: #9ed0ff">Elliot Bedworth</span></a></h1>
+						<nav>
+							<a href="#menu">Menu</a>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<div class="inner">
+							<h2>Menu</h2>
+							<ul class="links">
+								<li><a href="../../index.html">Home</a></li>
+								<li><a href="../../about.html">About Me</a></li>
+								<li><a href="../../my-work.html">My Work</a></li>
+								<li><a href="../../journal.html">Journal</a></li>
+							</ul>
+							<a href="#" class="close">Close</a>
+						</div>
+					</nav>
+
+				<!-- Wrapper -->
+					<section id="wrapper">
+						<header>
+							<div class="inner">
+
+								<h2>State Machine Diagram for Washing Machine</h2>
+
+                                <p>
+                                    During Unit 3, we were asked to develop a state machine diagram for a washing machine, based on an example state machine diagram from 
+                                    <i>The Unified Modeling Language Reference Manual Second Edition</i>.
+                                </p>
+
+							</div>
+						</header>
+
+						<!-- Content -->
+							<div class="wrapper">
+								<div class="inner">
+
+                                    <h3 class="major">The State Machine Diagram</h3>
+
+                                    <p>
+                                        The state machine diagram shows possible states of an object from a given class and shows the possible transitions between these states. 
+                                        This gives an overall picture of way a modelled object should behave during its existence. 
+                                        <br>
+                                        <br>
+                                        The example diagram provided in <i>The Unified Modeling Language Reference Manual Second Edition</i> shows a state machine diagram for 
+                                        a ticket to an event.
+                                    </p>
+
+                                    <figure>
+                                        <img src="img/uml-ref-manual-fig-3-7.png">
+                                        <figcaption>From Rumbaugh, J., Jacobson, I. & Booch, G. <i>The Unified Modeling Language Reference Manual, Second Edition. Fig 3-7.</i></figcaption>
+                                    </figure>
+									
+                                    <h3 class="major">Washing Machine</h3>
+
+                                    <p>
+                                        When modelling the washing machine, I identified four states which the system might be in at any one time:
+                                        <ol>
+                                            <li>Unlocked - The door is open and the machine is available for use.</li>
+                                            <li>Locked - The door is closed and locked and the machine is ready to start.</li>
+                                            <li>Running - The machine is performing a wash cycle.</li>
+                                            <li>Completed - The machine has finished its last wash cycle.</li>
+                                        </ol>
+                                        Whilst there are other states which could be considered, I felt as though these four were enough for mapping the transitions through 
+                                        the user operation of the machine. 
+                                    </p>
+
+                                    <figure>
+                                        <img src="img/washing-machine-uml.png">
+                                        <figcaption>State machine diagram for washing machine.</figcaption>
+                                    </figure>
+
+                                    <p>
+                                        For the transitions between each state, I considered the actions which could possibly take place (such as the user stopping the system 
+                                        mid-cycle) and also the actions which must take place (draining the water) before a state could move to another state. For the 'complete'
+                                        state, the machine must return to 'locked', as the water must still be drained from the system. No input is required for this to occur, only 
+                                        the act of entering into the 'complete' state. Because of this, there is some argument to be made for removing the 'complete' state. I made 
+                                        the decision to leave it in as I believe it will be necessary for implementation to provide indication that a cycle has completed even after 
+                                        the machine has returned to the 'unlocked' state.                                        
+                                    </p>
+
+                                </div>
+                            </div>
+
+					</section>
+
+				<!-- Footer -->
+				<section id="footer">
+					<div class="inner">
+						<h2 class="major">Get in touch</h2>
+						<p>If you wish to contact me regarding any of the information on this site, please use one of the methods below.</p>
+						<form method="post" action="#">
+							<div class="fields">
+								<div class="field">
+									<label for="name">Name</label>
+									<input type="text" name="name" id="name" />
+								</div>
+								<div class="field">
+									<label for="email">Email</label>
+									<input type="email" name="email" id="email" />
+								</div>
+								<div class="field">
+									<label for="message">Message</label>
+									<textarea name="message" id="message" rows="4"></textarea>
+								</div>
+							</div>
+							<ul class="actions">
+								<li><input type="submit" value="Send Message"/></li>
+							</ul>
+						</form>
+						<ul class="contact">
+							<li class="icon solid fa-home">
+								Chelmsford<br />
+								United Kingdom<br />
+							</li>
+							<li class="icon solid fa-envelope"><a href="mailto:eb23659@essex.ac.uk">eb23659@essex.ac.uk</a></li>
+							<li class="icon brands fa-linkedin"><a href="https://www.linkedin.com/in/elliot-bedworth/" target="_blank">https://www.linkedin.com/in/elliot-bedworth/</a></li>
+						</ul>
+						<ul class="copyright">
+							<li>&copy; All rights reserved.</li><li>Design: <a href="http://html5up.net" target="_blank">HTML5 UP</a></li>
+						</ul>
+					</div>
+				</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="../../assets/js/jquery.min.js"></script>
+			<script src="../../assets/js/jquery.scrollex.min.js"></script>
+			<script src="../../assets/js/browser.min.js"></script>
+			<script src="../../assets/js/breakpoints.min.js"></script>
+			<script src="../../assets/js/util.js"></script>
+			<script src="../../assets/js/main.js"></script>
+
+	</body>
+</html>
