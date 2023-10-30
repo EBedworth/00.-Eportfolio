@@ -1,0 +1,177 @@
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>E-Portfolio | Assignment 2</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../../assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="../../assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1><a href="../../index.html">E-Portfolio | <span style="color: #9ed0ff">Elliot Bedworth</span></a></h1>
+						<nav>
+							<a href="#menu">Menu</a>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<div class="inner">
+							<h2>Menu</h2>
+							<ul class="links">
+								<li><a href="../../index.html">Home</a></li>
+								<li><a href="../../about.html">About Me</a></li>
+								<li><a href="../../my-work.html">My Work</a></li>
+								<li><a href="../../journal.html">Journal</a></li>
+							</ul>
+							<a href="#" class="close">Close</a>
+						</div>
+					</nav>
+
+				<!-- Wrapper -->
+					<section id="wrapper">
+						<header>
+							<div class="inner">
+								<h2>Assignment 2</h2>
+
+                                <p>Our second assignment was to implement the code which we designed in Assignment 1. We also had to include automated tests that we had run to 
+                                    observe the correct execution of our code. 
+                                </p>
+							</div>
+						</header>
+
+						<!-- Content -->
+							<div class="wrapper">
+								<div class="inner">
+
+
+									<h3 class="major">Software Development</h3>
+
+									<p>
+                                        I used my UML diagrams from Assignment 1 to start writing the code for the classes which I had planned. As I knew it would be the most complex
+                                        and take the longest, I began with the navigation system. I had decided already to create individual files for my project based on each 
+                                        operation. I felt that this was a logical grouping and was preferable to creating a file for every class I created. The trade-off was 
+                                        more files for easier maintenance, but I felt that having a large number of files would lead to naming issues and long, unwieldy import 
+                                        statements. 
+                                    </p>                                        
+                                    <p>
+                                        The overall class design was straight-forward, using the UML diagrams. I referenced Python's PEP 257 for style too, and ensured I had detailed
+                                        docstrings for every class. This turned out to be useful later when writing driver code in main.py, as the docstring allowed me to hover
+                                        over my new class methods and read what arguments were expected in which order. I also included some data in the navigation file to assist 
+                                        with simulation. CITIES is a dictionary of city names mapped to location objects (the GPS coordinates of the city in real life). In design, 
+                                        I had planned for a City object which would inherit from Location, however, I felt that this was unnecessary when a dictionary would 
+                                        perform the same function as I was hoping to achieve. I also created a DIRECTION_LIST, which contained strings of instructions that you might
+                                        see on a navigation system. This list is to simulate a system generating a route to a destination, as this was not something that I would 
+                                        realistically be able to program. I used Python's random module here to grab a random selection of instructions for use in the Direction 
+                                        objects. I also used this approach in the ACC module, for simulating sensor readings corresponding to the distance of an approaching object.
+                                    </p>
+
+                                    <p>
+                                        In main.py, I created some driver code so that any of the three systems could be launched from the terminal. I requested user input to 
+                                        navigate through the menu which allowed each system to launch. I also created some simulated output from each system, which would, in 
+                                        reality, be output data to some system which had called an object method. Whilst this was useful for my own testing and to show how 
+                                        each system would operate, I think that I may have deviated too far from how the system would operate in reality. The GPS object in 
+                                        particular became slightly long winded, in order to continuously generate new positional coordinates which were also moving in the correct
+                                        direction along a route. 
+                                    </p>
+
+                                    <img src="img/self-driving car interface.png">
+
+                                    <h3 class="major"><br>Testing</h3>
+
+                                    <p>      
+                                        I used unittest for testing my program. I created individual files again for each function and included tests for any class methods which
+                                        had any real potential to fail (anything other than setters and getters). I found unittest to be reasonably simple to implement once I had 
+                                        written my first test, although the process did also feel very long winded. I expect there is significant functionality which I am not yet
+                                        aware of, because the effort spent writing the tests did not feel particularly worthwhile. It would have been quicker and easier to simply
+                                        test the functions and methods which I tested in unittest manually, with the inputs I had configured in my test classes. However, I do know 
+                                        that there are other methods available for testing more complex code. 
+                                    </p>
+									
+                                    <h3 class="major">Reflection</h3>
+                                    <p>
+                                        I spent a lot of time on this assignment, ensuring that it was styled well and testing various elements of functionality. In the end, I was
+                                        happy with the work that I produced. I do think that I spent too long in creating code which simulated something human-readable to print
+                                        to the command line, where I should have focused on how those objects would function in real life. This is especially true in the case of 
+                                        the GPS object, which deviated significantly from how I would expect a GPS to function. 
+                                    </p>
+                                    <p>
+                                        This assignment was also challenging, although in a different way to Assignment 1. I felt as though we had been thrown in at the deep end
+                                        slightly for this assignment, as I have not got experience in writing complete programs, let alone object-oriented programs, and I felt as 
+                                        though the application of a self-driving car was quite complex. Throughout the development, I wanted to have a parallel program running to 
+                                        simulate data for my objects such as the ACC Sensor objects and the GPS. However, that is very out of scope of this module, and beyond my 
+                                        current skillset, and I found it frustrating that I couldn't simulate the car driving when all of my software was developed with driving 
+                                        in mind. 
+                                    </p>                 
+                                    <p>
+                                        Overall, I am happy with the work that I produced and I definitely feel as though the assignment helped me develop my software skills and 
+                                        cemented some of the concepts of object-oriented program in my mind. I look forward to feeling more confident about building object-oriented
+                                        programs in the future. 
+                                    </p>                   
+
+                                </div>
+                            </div>
+
+					</section>
+
+				<!-- Footer -->
+				<section id="footer">
+					<div class="inner">
+						<h2 class="major">Get in touch</h2>
+						<p>If you wish to contact me regarding any of the information on this site, please use one of the methods below.</p>
+						<form method="post" action="#">
+							<div class="fields">
+								<div class="field">
+									<label for="name">Name</label>
+									<input type="text" name="name" id="name" />
+								</div>
+								<div class="field">
+									<label for="email">Email</label>
+									<input type="email" name="email" id="email" />
+								</div>
+								<div class="field">
+									<label for="message">Message</label>
+									<textarea name="message" id="message" rows="4"></textarea>
+								</div>
+							</div>
+							<ul class="actions">
+								<li><input type="submit" value="Send Message"/></li>
+							</ul>
+						</form>
+						<ul class="contact">
+							<li class="icon solid fa-home">
+								Chelmsford<br />
+								United Kingdom<br />
+							</li>
+							<li class="icon solid fa-envelope"><a href="mailto:eb23659@essex.ac.uk">eb23659@essex.ac.uk</a></li>
+							<li class="icon brands fa-linkedin"><a href="https://www.linkedin.com/in/elliot-bedworth/" target="_blank">https://www.linkedin.com/in/elliot-bedworth/</a></li>
+						</ul>
+						<ul class="copyright">
+							<li>&copy; All rights reserved.</li><li>Design: <a href="http://html5up.net" target="_blank">HTML5 UP</a></li>
+						</ul>
+					</div>
+				</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="../../assets/js/jquery.min.js"></script>
+			<script src="../../assets/js/jquery.scrollex.min.js"></script>
+			<script src="../../assets/js/browser.min.js"></script>
+			<script src="../../assets/js/breakpoints.min.js"></script>
+			<script src="../../assets/js/util.js"></script>
+			<script src="../../assets/js/main.js"></script>
+
+	</body>
+</html>

@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>E-Portfolio | Final Reflection</title>
+		<title>E-Portfolio | Assignment 1</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="../../assets/css/main.css" />
@@ -43,10 +43,10 @@
 					<section id="wrapper">
 						<header>
 							<div class="inner">
-								<h2>Final Reflection</h2>
+								<h2>Assignment 1</h2>
 
-                                <p>My final reflection on the content of object-oriented programming, covering what I have learned, how I have developed and 
-                                    my feelings on the module overall.
+                                <p>Our first assignment was to design software for three operations which would be incorporated within a self-driving car. We 
+                                    had to develop 5 UML diagrams to assist in this design. 
                                 </p>
 							</div>
 						</header>
@@ -56,76 +56,80 @@
 								<div class="inner">
 
 
-									<h3 class="major">Contents, Structure & Learning</h3>
+									<h3 class="major">Selecting the Operations</h3>
 
-									<p>I was excited to start this module, after reading the description in the course brochure. I was particularly keen to understand how to use 
-                                        and apply UML, having seen examples of class diagrams online in tutorial videos, as I felt that planning and designing a large software 
-                                        project were very important skills which would enable me to design larger-scale projects of my own. I was also interested in 
-                                        object-oriented programming, something which I had slightly more knowledge of but again, a very important, well-discussed development tool
-                                        which was not yet part of my skillset. 
+									<p>I began the assignment by selecting three operations which should be available within a self-driving car. I have a good knowledge of cars, 
+                                        and have actually been in a self-driving test vehicle during my time in the automotive industry. I also felt it necessary to consider 
+                                        how feasible it would be for me to implement some example of theses operations myself. I did feel as though this was maybe not something 
+                                        which I should be considering in the context of the assignment, however, I would also have to develop the software for week 11 and so I think 
+                                        it would be short-sighted to select a feature which would involve weeks of development. 
                                     </p>
                                         
                                     <p>
-                                        The Object-Oriented Programming module began with some fundamental introductions to OOP, where we explored class attributes (protected and 
-                                        private) and methods. Before expanding too deeply on the full functionality of these concepts, UML was introduced, along with ‘The Unified 
-                                        Modelling Language Reference Manual, Second Edition’. We studied several different UML views and developed some of our own diagrams along 
-                                        the way. I felt that this move to UML after only learning the fundamentals of OOP was well positioned, as the OOP concepts helped with 
-                                        studying certain elements of UML, particularly the class diagram, which is built around the software objects within a program.
+                                        The operations which I decided on were navigation, adaptive cruise control and lane guidance. I felt that these were all necessary for the 
+                                        actual operation of self-driving. I was reluctant to pick an operation like air conditioning or radio, which were not really essential for a 
+                                        self-driving car (although I'm sure this would have been fine). Of these three, I had some concern around navigation, as I am aware that solving
+                                        the fastest route between two points through a selection of connected points is a common algorithmic challenge. It isn't that I wouldn't like to 
+                                        work on this, but returning to the issue of feasibility, I wanted to ensure I focused on using skills developed in this module.
                                     </p>
+
+                                    <h3 class="major">UML Diagrams</h3>
+
                                     <p>      
-                                        Following this, we returned to classes and explored more practical and in-depth concepts, such as inheritance and encapsulation. At this 
-                                        time, our first assignment was also due, where we were tasked with designing our own software application, using UML, to provide some 
-                                        functionality as part of a self-driving car. 
+                                        The first UML diagram required was a use case diagram. I developed the following for my proposed software:
                                     </p>
+
+                                    <img src="img/System Use Case Diagram.jpg">
+                                    
                                     <p>
-                                        I found Assignment 1 difficult, which I attribute mostly to factors outside of the course. My work schedule has been very demanding for the 
-                                        duration, meaning I have been abroad working from various hotel rooms for most of this module. This was a situation that I knew I would 
-                                        find myself in when I began the course and I dealt with some things well, such as being aware of what was due by when, well in advance, and 
-                                        ensuring I had study materials available offline. However, I also struggled for time, particularly with Assignment 1. In the end, I was 
-                                        disappointed with the work that I had produced and felt at times as though I had not understood either the brief, or the elements of UML 
-                                        which I was trying to use. The best solution would have been for me to reach out to my tutor to clarify the brief, however, given the time 
-                                        pressure, I did not do this, which was a failing on my part. 
+                                        <br>
+                                        From this point in the assignment onwards, I think I misinterpreted the brief. For each of my three operations, I developed 4 individual 
+                                        diagrams, for a total of 12 additional diagrams. I believe the expectation of the brief was to create 4 additional diagrams, which contained
+                                        all of the operations together. I should have clarified this with my tutor before completing this work, and I am slightly annoyed at myself 
+                                        for not doing so. I have to put this down to leaving myself too little time to complete the assignment. In terms of the brief itself, I am 
+                                        not sure how I could design one class diagram for three operations which are not interacting with each other. I believe this would always
+                                        be modelled as three, separate diagrams. Perhaps the solution to this would have been to design them all interacting with the GUI, and then 
+                                        show each operation as a branch associated with the GUI. 
                                     </p>
+
                                     <p>
-                                        After Assignment 1, the course shifted focus again to data structures and testing. This was another subject which I was looking forward to 
-                                        studying, understanding the value of testing from my own career in engineering. We covered automated testing using both unittest and 
-                                        pytest, which I later incorporated into the development of my self-driving car software. We learned about cyclomatic complexity and 
-                                        attempts to measure the complexity of object-oriented code. For data structures, we explored the built-in types and considered how they too 
-                                        were objects, with well-designed wrappers. Another useful tool was introduced in comprehensions, and a maybe less useful one in coroutines. 
-                                        I felt that this whole section of the course provided real value in terms of different tools within Python, particularly through Python 
-                                        modules and coding techniques, which have already made me better at coding than I was before the module.
+                                        I also had some problems with the class diagram, due to my own knowledge. I found that I was not as comfortable with them as I had initially 
+                                        thought, prior to starting the assignment. I feel as though I became less clear of how my design should be as I progressed through the class
+                                        diagram and this led to me trying to reduce complexity (necessary complexity) from the diagrams. Taking a look at the class diagram for the 
+                                        navigation system:
                                     </p>
+
+                                    <img src="img/Navigation system class diagram.jpg">
+
                                     <p>
-                                        Assignment 2 was due in week 11. The assignment was to implement the software which we had designed in Assignment 1. I felt more 
-                                        comfortable programming than I did creating UML diagrams, however, because of my lack of confidence in what I had done during design 
-                                        (reinforced by some of the valid feedback I received for my assignment), I knew that I needed to change some of the elements which I had 
-                                        initially planned. I wrote a substantial amount of code for my assignment and tried to ensure I followed relevant PEPs for style and 
-                                        documentation. I also think that I went too far in making my code ‘usable’ for marking purposes. I created a lot of functionality to 
-                                        simulate the code working, mostly by print data which would normally be returned to some other calling object. On reflection, I think I 
-                                        should have implemented the software exactly how it would be implemented when part of a larger system, as the marker clearly would 
-                                        understand the functionality without my messages being printed to the terminal. This cost me significant time (which I was short of anyway) 
-                                        and in some places made me fundamentally change how some elements should have worked. When I submitted the assignment though, I was happy 
-                                        that my software was well presented, logically written and ‘complete’ (in terms of functionality). 
+                                        <br>
+                                        I am not sure about the function of GPS or City in this diagram. I also am not certain about the two associations from GPS, one for inheritance
+                                        from Location. I did a significant amount of rereading, as well as new reading, during the design of these diagrams and I think that given 
+                                        my time pressure, this did not end up helping me. 
                                     </p>                                    
 									
-                                    <h3 class="major">My Experience</h3>
+                                    <h3 class="major">Reflection</h3>
                                     <p>
-                                        I greatly enjoyed this module and felt that the content and assessment components led to tangible improvements in my overall software 
-                                        development abilities. At the same time, I found this module significantly more challenging than Launching into Computer Science. I believe 
-                                        this is largely down to my study being disjointed because of my demanding work schedule. However, I need to address this problem in future 
-                                        modules by being more specific with planning what I am going to complete in each available study window for each week. I can achieve this 
-                                        by creating a study plan in a spreadsheet, broken down into 1-hour blocks. Each week, I can identify the realistic hours that I can study, 
-                                        and I can then allocate some of the weeks work into each of these blocks. This will allow me to maintain continuous study throughout the 
-                                        week (as is normal when I am at home) as opposed to catching up on missed material when I have larger study windows available. 
+                                        I found this assignment very difficult, more so than I had expected. I did put in a lot of work to this design and spent a lot of time 
+                                        reading about UML diagrams, looking specifically at examples for vehicles and navigation systems. I am concerned about some key points looking 
+                                        ahead to my next assignment. 
                                     </p>
                                     <p>
-                                        Something which I feel good about at the end of this module is my ability to write good code efficiently. I am still far from a Python 
-                                        developer (obviously), however, I found myself being able to plan and write code very quickly and identify good design patterns for solving 
-                                        a particular problem. I think overall, this module has improved my self-confidence in developing software and I feel that my skillset has 
-                                        grown substantially. Completing this module has given me more enthusiasm going forward into my next modules, where I hope to be build to 
-                                        further build on the solid foundations that have been built here. 
-                                    </p>                                    
-                                    
+                                        Firstly, I am not sure still how navigation will work exactly. I know the navigation system will be the most complex of the three systems, and 
+                                        I have an outline I think for how these objects will interact. I will have to create something to run as an external GPS system, but I am not 
+                                        sure how to have this running constantly (or when the car is supposed to be moving) in parallel with my actual software. I am aware of threading 
+                                        and parallel programming, but I do not think either will be implemented easily (and probably should not be for this assignment). 
+                                    </p>                 
+                                    <p>
+                                        I also am concerned about how my misunderstanding the brief will impact my next assignment. I feel that I will definitely need to deviate from 
+                                        my design in some respects to create a logical program. But, I am not sure how far I will have to deviate and if this will negatively impact 
+                                        my grading of Assignment 2. 
+                                    </p>                   
+                                    <p>
+                                        Overall, I struggled with this assignment, but I am happy that I completed the work in time and produced a lot of UML diagrams. Even if this 
+                                        was not the correct approach for this assignment, I do feel as though creating so many diagrams was a useful exercise for my own development 
+                                        and made me think about design and the future implications decisions at this stage will have. 
+                                    </p>
                                 </div>
                             </div>
 
