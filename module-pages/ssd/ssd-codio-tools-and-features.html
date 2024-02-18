@@ -1,0 +1,191 @@
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>E-Portfolio | Python Tools and Features</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../../assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="../../assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1><a href="../../index.html">E-Portfolio | <span style="color: #9ed0ff">Elliot Bedworth</span></a></h1>
+						<nav>
+							<a href="#menu">Menu</a>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<div class="inner">
+							<h2>Menu</h2>
+							<ul class="links">
+								<li><a href="../../index.html">Home</a></li>
+								<li><a href="../../about.html">About Me</a></li>
+								<li><a href="../../my-work.html">My Work</a></li>
+								<li><a href="../../journal.html">Journal</a></li>
+							</ul>
+							<a href="#" class="close">Close</a>
+						</div>
+					</nav>
+
+				<!-- Wrapper -->
+					<section id="wrapper">
+						<header>
+							<div class="inner">
+								<h2>Python Tools and Features</h2>
+                                <p>
+									In Unit 3, we were asked to run some code and reflect on the Python tools and features we observed during execution. 
+                                </p>
+							</div>
+						</header>
+
+						<!-- Content -->
+							<div class="wrapper">
+								<div class="inner">
+									<h3 class="major">Part 1</h3>
+                                    <h4>Originating Code (C)</h4>
+                                    <pre><code>
+#include <stdio.h> 
+    int main(int argc, char **argv)
+    {
+    char buf[8]; // buffer for eight characters
+    printf("enter name:"); 
+    gets(buf); // read from stdio (sensitive function!)
+    printf("%s\n", buf); // print out data stored in buf
+    return 0; // 0 as return value
+    }
+                                    </code></pre>
+                                    <Blockquote>
+                                        Now compile and run the code. To test it, enter your first name (or at least the first 8 characters of it) you should get 
+                                        the output which is just your name repeated back to you.
+                                        <br>
+                                        <br>
+                                        Run the code a second time (from the command window this can be achieved by entering ./bufoverflow on the command line). 
+                                        This time, enter a string of 10 or more characters.
+                                    </Blockquote>
+                                    <h4>What happens?</h4>
+                                    <p>
+										After entering the longer string, the following message is returned in the terminal:
+                                        <pre><code>
+*** stack smashing detected ***: unknown terminated
+Aborted (core dumped)
+                                        </code></pre>
+									</p>
+									<h4>What does the output message mean?</h4>
+									<p>
+										Stack smashing detected means that the compiler (gcc) has detected an action which could result in buffer overflow occurring. The reason 
+                                        for this is that the program only allows for an 8 character string, which is shorter than the string entered.
+										<br>
+									</p>
+									<h3 class="major">Part 2</h3>
+                                    <h4>Originating Code (Python)</h4>
+                                    <pre><code>
+buffer=[None]*10
+for i in range (0,11):
+    buffer[i]=7
+print(buffer)
+                                    </code></pre>
+                                    <blockquote>
+                                            <li>Run your code using: Python overflow.py (or use the codio rocket icon)</li>
+                                            <li>What is the result?</li>
+                                            <li>Read about Pylint at http://pylint.pycqa.org/en/latest/tutorial.html</li>
+                                            <li>Run pylint on one of your files and evaluate the output</li>
+                                            <li>What is the result? Does this tell you how to fix the error above?</li>
+                                    </blockquote>
+                                    <h4>Results</h4>
+                                    <p>
+                                        When trying to run the file, the following is returned:
+                                        <pre><code>
+Traceback (most recent call last):
+  File "Overflow.py", line 3, in module
+    buffer[i]=7
+IndexError: list assignment index out of range
+                                        </code></pre>
+                                    </p>
+                                    <br>
+                                    <p>
+                                        When running with PyLint, the following is returned:
+                                        <pre><code>
+************* Module Overflow
+Overflow.py:4:0: C0303: Trailing whitespace (trailing-whitespace)
+Overflow.py:5:0: C0304: Final newline missing (missing-final-newline)
+Overflow.py:1:0: C0103: Module name "Overflow" doesn't conform to snake_case naming style (invalid-name)
+Overflow.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+
+-----------------------------------
+Your code has been rated at 0.00/1
+                                        </code></pre>
+                                    </p>
+                                    <br>
+                                    <p>
+                                        Whilst the PyLint output only shows us stylistic improvements, the output from the execution of the file informs us that
+                                        the issue is a 'list assignment index out of range'. From this message, we can either look up the cause, or even deduct that 
+                                        the issue is related to the length of our list. In this case, we are trying to allocate 11 items to a list which is only 10 
+                                        items long. 
+                                    </p>
+								</div>
+                            </div>
+
+					</section>
+
+				<!-- Footer -->
+				<section id="footer">
+					<div class="inner">
+						<h2 class="major">Get in touch</h2>
+						<p>If you wish to contact me regarding any of the information on this site, please use one of the methods below.</p>
+						<form method="post" action="#">
+							<div class="fields">
+								<div class="field">
+									<label for="name">Name</label>
+									<input type="text" name="name" id="name" />
+								</div>
+								<div class="field">
+									<label for="email">Email</label>
+									<input type="email" name="email" id="email" />
+								</div>
+								<div class="field">
+									<label for="message">Message</label>
+									<textarea name="message" id="message" rows="4"></textarea>
+								</div>
+							</div>
+							<ul class="actions">
+								<li><input type="submit" value="Send Message"/></li>
+							</ul>
+						</form>
+						<ul class="contact">
+							<li class="icon solid fa-home">
+								Chelmsford<br />
+								United Kingdom<br />
+							</li>
+							<li class="icon solid fa-envelope"><a href="mailto:eb23659@essex.ac.uk">eb23659@essex.ac.uk</a></li>
+							<li class="icon brands fa-linkedin"><a href="https://www.linkedin.com/in/elliot-bedworth/" target="_blank">https://www.linkedin.com/in/elliot-bedworth/</a></li>
+						</ul>
+						<ul class="copyright">
+							<li>&copy; All rights reserved.</li><li>Design: <a href="http://html5up.net" target="_blank">HTML5 UP</a></li>
+						</ul>
+					</div>
+				</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="../../assets/js/jquery.min.js"></script>
+			<script src="../../assets/js/jquery.scrollex.min.js"></script>
+			<script src="../../assets/js/browser.min.js"></script>
+			<script src="../../assets/js/breakpoints.min.js"></script>
+			<script src="../../assets/js/util.js"></script>
+			<script src="../../assets/js/main.js"></script>
+
+	</body>
+</html>

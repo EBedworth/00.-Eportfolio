@@ -1,0 +1,180 @@
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>E-Portfolio | Producer-Consumer Mechanism</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../../assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="../../assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1><a href="../../index.html">E-Portfolio | <span style="color: #9ed0ff">Elliot Bedworth</span></a></h1>
+						<nav>
+							<a href="#menu">Menu</a>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<div class="inner">
+							<h2>Menu</h2>
+							<ul class="links">
+								<li><a href="../../index.html">Home</a></li>
+								<li><a href="../../about.html">About Me</a></li>
+								<li><a href="../../my-work.html">My Work</a></li>
+								<li><a href="../../journal.html">Journal</a></li>
+							</ul>
+							<a href="#" class="close">Close</a>
+						</div>
+					</nav>
+
+				<!-- Wrapper -->
+					<section id="wrapper">
+						<header>
+							<div class="inner">
+								<h2>Codio Activity - Producer-Consumer Mechanism</h2>
+
+                                <p>In Unit 3, we were asked to answer some questions around the producer-consumer mechanism, specifically focused on 
+                                    a block of code we were provided.
+                                </p>
+							</div>
+						</header>
+
+						<!-- Content -->
+							<div class="wrapper">
+								<div class="inner">
+                                    <h3 class="major">Originating Code</h3>
+                                    <pre><code>
+# code source: https://techmonger.github.io/55/producer-consumer-python/
+ 
+from threading import Thread
+from queue import Queue
+ 
+q = Queue()
+final_results = []
+ 
+def producer():
+    for i in range(100):
+        q.put(i)
+        
+ 
+def consumer():
+    while True:
+        number = q.get()
+        result = (number, number**2)
+        final_results.append(result)
+        q.task_done()
+   
+   
+for i in range(5):
+    t = Thread(target=consumer)
+    t.daemon = True
+    t.start()
+    
+producer()
+ 
+q.join()
+ 
+print (final_results)
+                                    </code></pre>
+                                    <h3 class="major">Questions</h3>
+                                    <h4>How is the queue data structure used to achieve the purpose of the code?</h4>
+                                    <p>
+                                        The queue is used in the code to provide an iterable object with which to eventually build a list containing numbers and their 
+                                        corresponding squared value. The code populates the queue with numbers in the producer function, then creates a tuple of the number 
+                                        and its square, which is finally appended to final_results. 
+                                    </p>
+                                    <br>
+                                    <h4>What is the purpose of q.put()?</h4>
+                                    <p>
+                                        q.put(i) is used to add an item to the queue and also increment the count of unfinished tasks which the queue has to process (used 
+                                        later with q.join()). 
+                                    </p>
+                                    <br>
+                                    <h4>What is achieved by q.get()?</h4>
+                                    <p>
+                                        q.get() returns and removes an item from the queue, which is then added as the first element of the tuple result, and squared to 
+                                        become the second element of result. q.get() does not decrease the count of unfinished tasks for the queue, but this is achieved 
+                                        through the use of q.task_done() in the same loop. 
+                                    </p>
+                                    <br>
+                                    <h4>What functionality is provided by q.join()?</h4>
+                                    <p>
+                                        q.join() is used to prevent the program proceeding until all queue tasks have been completed. In this instance, this is until the 
+                                        loop in the consumer function has completed. 
+                                    </p>
+                                    <br>
+                                    <h4>Extend this producer-consumer code to make the producer-consumer scenario available in a secure way. What technique(s) would be 
+                                        appropriate to apply?</h4>
+                                    <p>
+                                        Making use of the parameters of Queue, get and put would increase the security of the code. q could be implemented with a maximum size, 
+                                        to prevent unnecessarily large amounts of memory being consumed by continuously adding items or adding large data sets to the queue. 
+                                        For get and put, making use of the Timeout parameter would also increase security, as this would ensure that code does not hang for an 
+                                        indefinite amount of time should the queue become full. 
+                                    </p>
+								</div>
+                            </div>
+
+					</section>
+
+				<!-- Footer -->
+				<section id="footer">
+					<div class="inner">
+						<h2 class="major">Get in touch</h2>
+						<p>If you wish to contact me regarding any of the information on this site, please use one of the methods below.</p>
+						<form method="post" action="#">
+							<div class="fields">
+								<div class="field">
+									<label for="name">Name</label>
+									<input type="text" name="name" id="name" />
+								</div>
+								<div class="field">
+									<label for="email">Email</label>
+									<input type="email" name="email" id="email" />
+								</div>
+								<div class="field">
+									<label for="message">Message</label>
+									<textarea name="message" id="message" rows="4"></textarea>
+								</div>
+							</div>
+							<ul class="actions">
+								<li><input type="submit" value="Send Message"/></li>
+							</ul>
+						</form>
+						<ul class="contact">
+							<li class="icon solid fa-home">
+								Chelmsford<br />
+								United Kingdom<br />
+							</li>
+							<li class="icon solid fa-envelope"><a href="mailto:eb23659@essex.ac.uk">eb23659@essex.ac.uk</a></li>
+							<li class="icon brands fa-linkedin"><a href="https://www.linkedin.com/in/elliot-bedworth/" target="_blank">https://www.linkedin.com/in/elliot-bedworth/</a></li>
+						</ul>
+						<ul class="copyright">
+							<li>&copy; All rights reserved.</li><li>Design: <a href="http://html5up.net" target="_blank">HTML5 UP</a></li>
+						</ul>
+					</div>
+				</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="../../assets/js/jquery.min.js"></script>
+			<script src="../../assets/js/jquery.scrollex.min.js"></script>
+			<script src="../../assets/js/browser.min.js"></script>
+			<script src="../../assets/js/breakpoints.min.js"></script>
+			<script src="../../assets/js/util.js"></script>
+			<script src="../../assets/js/main.js"></script>
+
+	</body>
+</html>

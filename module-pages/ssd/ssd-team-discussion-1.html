@@ -54,12 +54,78 @@
 						<!-- Content -->
 							<div class="wrapper">
 								<div class="inner">
-
-                                    <h3 class="major">Question 1 - What factors determin whether a programming language is secure or not?</h3>
-
+                                    <h3 class="major">Question 1 - What factors determine whether a programming language is secure or not?</h3>
+									<h4>My Answer</h4>
 									<p>
+										Cifuentes et al. (2019) propose that a secure programming language should provide, at a language-level, protection against all prominent categories of vulnerability. 
+										Specifically, these are identified as:
+										<ul>
+										<li>Buffer errors</li>
+										<li>Injection errors</li>
+										<li>Information leaks</li>
+										</ul>
+										I believe that for a programming language to be considered truly secure, the language itself must be designed in such a way that it could not be used to design software 
+										which contains any possibility of unauthorised usage of the software or access to protected data. This goal also relies heavily on the programmer themselves, and so the 
+										human factor of the language must also be a part of the evaluation of security. This would include features such as readability and maintainability providing a sufficient 
+										level of abstraction for the programmer to give sufficient resource to secure development, without being overloaded. 
                                     </p>
-																		
+									<h4>Other Team Members</h4>
+									<p>
+										Other members of my team went into more specific detail of features which might be found in a 'secure' language, which I think was valuable. Specifically mentioned by 
+										multiple team members were: 
+										<ul>
+											<li>Memory Safety</li>
+											<li>Type Safety</li>
+											<li>Active Community / Ecosystem Support</li>
+											<li>Effective Security Tools</li>
+										</ul>
+										<br>
+									</p>
+									<h3 class="major">Question 2 - Could Python be classed as a secure language? Justify your answer.</h3>
+									<h4>My Answer</h4>
+									<p>
+										In relation to the consideration of human factors of security of the language, Python does very well at providing high levels of abstraction to ensure that a programmer 
+										can be focused on designing secure software. Specifically, Python is incredibly human-readable and support for an object-oriented approach to development allow easy 
+										maintenance of existing software. 
+										<br>
+										<br>
+										Programmatically too, Python provides many mitigations for known vulnerabilities in the language (Pillai, 2017). In addition to these mitigations, by design Python has 
+										abstracted away from direct memory access functionality which is possible with C (which the default implementation of Python uses). This does much to prevent buffer 
+										errors in particular. However, to identify and understand the implementation of the mitigations to many vulnerabilities present in Python, the programmer must have prior 
+										knowledge of the vulnerability and access to sufficient external documentation to counter it. Because of this, I would not class Python as secure. Built-in language 
+										components can still be used to either knowingly or unknowingly create vulnerabilities in software. If Python were truly secure, such an action should not be possible. 
+										I do believe that Python does very well as a language working towards being secure, however, whilst any vulnerabilities still exist (or can exist) in modern Python 
+										programs, I do not believe it correct to say that it is secure. 
+									</p>
+									<h4>Other Team Members</h4>
+									<p>
+										Where I felt that Python should not be considered a secure language, some of the other team members had different opinions. One team member felt that Python should be 
+										considered as secure, due to the measures in place to address the specific points which were mentioned in question 1 (memory safety etc.). Another team member said that 
+										Python was somewhat secure, but not entirely, which was closer to my own opinion. We discussed these differences in our group chat. 
+										<br>
+										<br>
+										<div class="col-12"><span class="image fit"><img src="img/team-discussion.png" alt="" /></span></div>
+										<br>
+									</p>
+									<h3 class="major">Question 3 - Python would be a better language to create operating systems than C. Discuss.</h3>
+									<h4>My Answer</h4>
+									<p>
+										From a secure programming perspective, Python would offer some advantages when developing software as complex as an operating system. As previously mentioned, abstraction 
+										away from memory allocation/deallocation alongside human readability would likely provide an easily maintainable system with few opportunities for buffer overflow errors.
+										<br>
+										<br>
+										However, some of the factors which make Python a good language in regards to security also make it an inferior language to create an operating system in, when compared to 
+										a language such as C. These abstractions away from memory manipulation are useful for software applications which have no need for direct memory access, but the operating 
+										system does not fall into this category. Memory management is in fact one of the key roles of the operating system, and something which Python provides little access to 
+										or visibility of. Whilst Python relies on C to allocate memory, the increased overheads this requires would impact the performance of an operating system (Cifuentes & 
+										Bierman, 2019). 
+									</p>
+									<h4>Other Team Members</h4>
+									<p>
+										For this question, the whole team felt that Python would not be the best choice of language for building an operating system. Something interesting which was raised was 
+										the idea that Python could be used to build components or tools within an operating system, particularly where the more secure features, when compared to lower-level 
+										languages, could be useful. 
+									</p>
                                 </div>
                             </div>
 
