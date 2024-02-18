@@ -153,8 +153,59 @@ app.run(debug=True)
                                     <p>
                                         <img src="img/flask-API-q1.png">
                                     </p>
-                                    <h4>Run the following command at the terminal prompt: w3m http://127.0.0.1:5000/user/Ann<br>
-                                        What happens when this command is run and why?</h4>
+                                    <h4>Run the following command at the terminal prompt: w3m http://127.0.0.1:5000/user/Ann. What happens when this command is run and why?</h4>
+                                    <p>
+                                        This part of the exercise is where I began encountering issues when following the instructions. The command above does nothing when entered in the 
+                                        terminal prompt which is being used to run flask. It seemed as though this particular exercise was missing some fundamental information, as we were 
+                                        instructed to run these commands in our Codio Jupyter Workbook workspace, but the exercise does not work correctly by doing so. The source article 
+                                        for the code is also behind a paywall (on Medium), so it was not possible to check what information was missing. 
+                                    </p>
+                                    <p>
+                                        To get some sensible results, I created a virtual environment in Python from my terminal in VSCode. I used the command ‘python -m venv .venv’. This 
+                                        created a Python virtual environment (or venv) called .venv in my root directory. I activated the virtual environment by running the command 
+                                        ‘.venv\Scripts\activate’. Activating the virtual environment allowed me to install Python packages (such as Flask) without being concerned about installing 
+                                        many different packages alongside my base Python installation. From here, I used pip to install flask and flask_restful in my virtual environment.
+                                    </p>
+                                    <p>
+                                        I then ran the API.py code from within my virtual environment. The w3m command which we were asked to run returned an error as not recognised. After some 
+                                        research, it seems w3m is a text-based browser which requires a further installation, although perhaps is included by default on Linux systems. Either way, 
+                                        I entered the URL pointing at localhost directly into Google Chrome. The result was the following in Chrome: 
+                                    </p>
+                                    <p>
+                                        <img src="img/flask-API-q2-1.png">
+                                    </p>
+                                    <p>
+                                        And in my terminal (still running the flask application), the following was shown: 
+                                    </p>
+                                    <p>
+                                        <img src="img/flask-API-q2-2.png">
+                                    </p>
+                                    <p>
+                                        What is happening here is that in Chrome, I am requesting access to the user object with the name Ann. Chrome has returned this to me by using the Get method 
+                                        of the User class in the flask application running on localhost. In the Get method, the user “Ann” is found in the loop, so the corresponding data is returned.
+                                    </p>
+                                    <h4>Run the following command at the terminal prompt: w3m http://127.0.0.1:5000/user/Adam. What happens when this command is run and why?</h4>
+                                    <p>
+                                        When this command is run, Chrome returns the following: 
+                                    </p>
+                                    <p>
+                                        <img src="img/flask-API-q3-1.png">
+                                    </p>
+                                    <p>
+                                        And the following is shown in the terminal: 
+                                    </p>
+                                    <p>
+                                        <img src="img/flask-API-q3-2.png">
+                                    </p>
+                                    <p>
+                                        As before, Chrome uses the Get method of User to request the data for the user “Adam”. However, as this user does not exist, the loop completes without returning, 
+                                        and the Get method instead returns the failed case of “User not found” along with a 404 code. 
+                                    </p>
+                                    <h4>What capability is achieved by the flask library?</h4>
+                                    <p>
+                                        The flask library enables creation of web applications using the Python language. This allows common web functions such as Get and Post to be configured. In this 
+                                        example, we are creating a local web application running only on our machine. 
+                                    </p>
                                 </div>
                             </div>
 

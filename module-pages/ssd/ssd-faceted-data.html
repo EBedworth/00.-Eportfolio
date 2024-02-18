@@ -1,0 +1,181 @@
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>E-Portfolio | Faceted Data</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../../assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="../../assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1><a href="../../index.html">E-Portfolio | <span style="color: #9ed0ff">Elliot Bedworth</span></a></h1>
+						<nav>
+							<a href="#menu">Menu</a>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<div class="inner">
+							<h2>Menu</h2>
+							<ul class="links">
+								<li><a href="../../index.html">Home</a></li>
+								<li><a href="../../about.html">About Me</a></li>
+								<li><a href="../../my-work.html">My Work</a></li>
+								<!-- <li><a href="../../journal.html">Journal</a></li> -->
+							</ul>
+							<a href="#" class="close">Close</a>
+						</div>
+					</nav>
+
+				<!-- Wrapper -->
+					<section id="wrapper">
+						<header>
+							<div class="inner">
+								<h2>Faceted Data</h2>
+                                <p>
+									In Unit 10, we were instructed to read the article by Schmitz et al. (2016) regarding Faceted Data. We were then asked to comment on how 
+                                    good of an approach the idea is, and to outline how we would implement such an approach in Python. 
+                                </p>
+							</div>
+						</header>
+
+						<!-- Content -->
+							<div class="wrapper">
+								<div class="inner">
+									<h3 class="major">Questions</h3>
+                                    <h4>Do you think this is a good approach to protect systems from data leakage? What are the pros and cons?</h4>
+                                    <p>
+                                        I would not say definitively that faceted data is either a good or bad approach to preventing data leakage, but rather that there 
+                                        are both pros and cons of such an approach which should be considered when comparing to other related methods. 
+                                    </p>
+                                    <p>
+                                        Faceted data is, by design, used to protect against the accidental leaking of data. By encapsulating data in 'facets', with public
+                                        and private views, the structure of data storage is well considered and designed with the prevention of such leakage in mind. This 
+                                        encourages the development of 'safe' software (with regards to data leakage), which is obviously a beneficial attribute.
+                                    </p>
+                                    <p>
+                                        In addition to this, by defining the structure of data such that sensitive data cannot be leaked, it removes complexity through 
+                                        any variation which might otherwise be present in the storing and processing of data. This ensures that a system where faceted data
+                                        is applied will be consistent and should be safe from data-leakage throughout. 
+                                    </p>
+                                    <p>
+                                        Negative aspects may be encountered when a system using faceted data must interact with one which does not. I would expect this to be
+                                        quite a likely scenario, given that many systems which process sensitive user data must interact with external services such as payment
+                                        systems and booking databases, to name a few. Where facted data is used in one part of a chain of systems, maintaining consistency in the 
+                                        private and public data could prove challenging, and this data will also presumably become 'unfaceted' once it has left the originating 
+                                        system. 
+                                    </p>
+                                    <p>
+                                        It should also be noted that the article focuses mostly on using faceted data in Haskell, which has certain attributes as a language which 
+                                        may not necessarily translate to other languages. For example, Haskell is entirely functional and is generally a compiled language, as 
+                                        opposed to Python which is an object-oriented and interpreted language. Although the article does consider interpreted languages, it may 
+                                        be the case that faceted data is less practical in these languages.
+                                    </p>
+                                    <h4>Create a basic outline design of how you would create such a system in Python</h4>
+                                    <p>
+                                        To implement this approach in Python, I would use private class attributes to prevent access to the private data, and create non-private 
+                                        attributes for the public data. Using this method, we could create appropriate methods in each class (each type of data we will store) 
+                                        for allowing access to the correct level of data as defined. 
+                                    </p>
+                                    <p>
+                                        Below is a brief overview of how this might look: 
+                                    </p>
+                                    <p>
+                                        <pre><code>
+"""Example of implementing faceted data in Python"""
+
+
+class User(object):
+    """Defines an example of both public and private user data"""
+
+    def __init__(self, fname, name, fdob, dob, fmaiden_name, maiden_name):
+        # Private data
+        self.__fname = fname
+        self.__fdob = fdob
+        self.__fmaiden_name = fmaiden_name
+        # Public data
+        self.name = name
+        self.dob = dob
+        self.maiden_name = maiden_name
+
+    @property
+    def name(self):
+        return self.name
+    
+    @name.setter
+    def name(self, new_name=None, fname=None):
+        if new_name != None:
+            self.name = new_name
+        
+        if fname != None:
+            self.__fname = fname
+
+                                        </code></pre>
+                                    </p>
+								</div>
+                            </div>
+
+					</section>
+
+				<!-- Footer -->
+				<section id="footer">
+					<div class="inner">
+						<h2 class="major">Get in touch</h2>
+						<p>If you wish to contact me regarding any of the information on this site, please use one of the methods below.</p>
+						<form method="post" action="#">
+							<div class="fields">
+								<div class="field">
+									<label for="name">Name</label>
+									<input type="text" name="name" id="name" />
+								</div>
+								<div class="field">
+									<label for="email">Email</label>
+									<input type="email" name="email" id="email" />
+								</div>
+								<div class="field">
+									<label for="message">Message</label>
+									<textarea name="message" id="message" rows="4"></textarea>
+								</div>
+							</div>
+							<ul class="actions">
+								<li><input type="submit" value="Send Message"/></li>
+							</ul>
+						</form>
+						<ul class="contact">
+							<li class="icon solid fa-home">
+								Chelmsford<br />
+								United Kingdom<br />
+							</li>
+							<li class="icon solid fa-envelope"><a href="mailto:eb23659@essex.ac.uk">eb23659@essex.ac.uk</a></li>
+							<li class="icon brands fa-linkedin"><a href="https://www.linkedin.com/in/elliot-bedworth/" target="_blank">https://www.linkedin.com/in/elliot-bedworth/</a></li>
+						</ul>
+						<ul class="copyright">
+							<li>&copy; All rights reserved.</li><li>Design: <a href="http://html5up.net" target="_blank">HTML5 UP</a></li>
+						</ul>
+					</div>
+				</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="../../assets/js/jquery.min.js"></script>
+			<script src="../../assets/js/jquery.scrollex.min.js"></script>
+			<script src="../../assets/js/browser.min.js"></script>
+			<script src="../../assets/js/breakpoints.min.js"></script>
+			<script src="../../assets/js/util.js"></script>
+			<script src="../../assets/js/main.js"></script>
+
+	</body>
+</html>
