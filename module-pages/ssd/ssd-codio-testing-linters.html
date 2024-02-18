@@ -1,0 +1,278 @@
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>E-Portfolio | Testing Linters in Python</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../../assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="../../assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1><a href="../../index.html">E-Portfolio | <span style="color: #9ed0ff">Elliot Bedworth</span></a></h1>
+						<nav>
+							<a href="#menu">Menu</a>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<div class="inner">
+							<h2>Menu</h2>
+							<ul class="links">
+								<li><a href="../../index.html">Home</a></li>
+								<li><a href="../../about.html">About Me</a></li>
+								<li><a href="../../my-work.html">My Work</a></li>
+								<!-- <li><a href="../../journal.html">Journal</a></li> -->
+							</ul>
+							<a href="#" class="close">Close</a>
+						</div>
+					</nav>
+
+				<!-- Wrapper -->
+					<section id="wrapper">
+						<header>
+							<div class="inner">
+								<h2>Exploring Linters</h2>
+                                <p>
+									In Unit 6, we were asked to run some Python tools which check our code for linters (stylistic errors) and comment on the 
+                                    output of these tools, focusing on how useful this output was to improving our code.
+                                </p>
+							</div>
+						</header>
+
+						<!-- Content -->
+							<div class="wrapper">
+								<div class="inner">
+									<h3 class="major">Testing Tools</h3>
+                                    <p>
+                                        Two tools were to be used for testing our example code during this exercise. The tools were:
+                                        <li>PyLint</li>
+                                        <li>Flake8</li>
+										<br>
+                                        Were provided with some sample Python files to test our code, and asked to comment on the output from our testing tools and then to 
+                                        fix these files.
+                                    </p>
+                                    <h4>styleLint.py</h4>
+                                    <p>
+										Our first file was styleLint.py, formatted as below:
+                                        <pre><code>
+def factorial(n):
+""" Return factorial of n """
+if n == 0:
+return 1
+else:
+return n*factorial(n-1)   
+                                        </code></pre>
+										When this code was run with Python, an indentation error was returned. In order to fix this, the indentation was corrected as follows:
+										<br>
+										<br>
+										<pre><code>
+def factorial(n):
+""" Return factorial of n """
+if n == 0:
+	return 1
+else:
+	return n*factorial(n-1)
+										</code></pre>
+                                    </p>
+									<h4>pylintTest.py</h4>
+									<p>
+										We were then asked to run both PyLint and Flake8 on the following file (pylintTest.py):
+										<pre><code>
+
+# SOURCE OF CODE: https://docs.pylint.org/en/1.6.0/tutorial.html
+
+import string
+ 
+shift = 3
+choice = raw_input("would you like to encode or decode?")
+word = (raw_input("Please enter text"))
+letters = string.ascii_letters + string.punctuation + string.digits
+encoded = ''
+if choice == "encode":
+  for letter in word:
+    if letter == ' ':
+      encoded = encoded + ' '
+    else:
+      x = letters.index(letter) + shift
+      encoded=encoded + letters[x]
+    if choice == "decode":
+      for letter in word:
+        if letter == ' ':
+            encoded = encoded + ' '
+        else:
+          x = letters.index(letter) - shift
+          encoded = encoded + letters[x]
+
+print encoded
+										</code></pre>
+										When this code was tested with PyLint, the following output was returned: 
+										<br>
+										<br>
+										<pre><code>
+************* Module pylintTest
+C:  5, 0: Trailing whitespace (trailing-whitespace)
+W: 12, 0: Bad indentation. Found 2 spaces, expected 4 (bad-indentation)
+W: 13, 0: Bad indentation. Found 4 spaces, expected 8 (bad-indentation)
+W: 14, 0: Bad indentation. Found 6 spaces, expected 12 (bad-indentation)
+W: 15, 0: Bad indentation. Found 4 spaces, expected 8 (bad-indentation)
+W: 16, 0: Bad indentation. Found 6 spaces, expected 12 (bad-indentation)
+W: 17, 0: Bad indentation. Found 6 spaces, expected 12 (bad-indentation)
+C: 17, 0: Exactly one space required around assignment
+      encoded=encoded + letters[x]
+             ^ (bad-whitespace)
+W: 18, 0: Bad indentation. Found 4 spaces, expected 8 (bad-indentation)
+W: 19, 0: Bad indentation. Found 6 spaces, expected 12 (bad-indentation)
+W: 20, 0: Bad indentation. Found 8 spaces, expected 16 (bad-indentation)
+W: 21, 0: Bad indentation. Found 12 spaces, expected 20 (bad-indentation)
+W: 22, 0: Bad indentation. Found 8 spaces, expected 16 (bad-indentation)
+W: 23, 0: Bad indentation. Found 10 spaces, expected 20 (bad-indentation)
+W: 24, 0: Bad indentation. Found 10 spaces, expected 20 (bad-indentation)
+C: 26, 0: Final newline missing (missing-final-newline)
+C:  1, 0: Module name "pylintTest" doesn't conform to snake_case naming style (invalid-name)
+C:  1, 0: Missing module docstring (missing-docstring)
+C:  6, 0: Constant name "shift" doesn't conform to UPPER_CASE naming style (invalid-name)
+C:  7, 0: Constant name "choice" doesn't conform to UPPER_CASE naming style (invalid-name)
+C:  8, 0: Constant name "word" doesn't conform to UPPER_CASE naming style (invalid-name)
+C:  9, 0: Constant name "letters" doesn't conform to UPPER_CASE naming style (invalid-name)
+C: 10, 0: Constant name "encoded" doesn't conform to UPPER_CASE naming style (invalid-name)
+W: 19, 6: Redefining name 'letter' from outer scope (line 12) (redefined-outer-name)
+
+--------------------------------------------------------------------
+Your code has been rated at -2.63/10 (previous run: -2.63/10, +0.00)
+
+										</code></pre>
+										And when testing with Flake8, the output was: 
+										<br>
+										<br>
+										<pre><code>
+pylintTest.py:5:1: W293 blank line contains whitespace
+pylintTest.py:12:3: E111 indentation is not a multiple of 4
+pylintTest.py:14:7: E111 indentation is not a multiple of 4
+pylintTest.py:16:7: E111 indentation is not a multiple of 4
+pylintTest.py:17:7: E111 indentation is not a multiple of 4
+pylintTest.py:17:14: E225 missing whitespace around operator
+pylintTest.py:19:7: E111 indentation is not a multiple of 4
+pylintTest.py:23:11: E111 indentation is not a multiple of 4
+pylintTest.py:24:11: E111 indentation is not a multiple of 4
+pylintTest.py:26:14: W292 no newline at end of file
+
+										</code></pre>
+									</p>
+									<h4>Pylint and Flake8 Comparison</h4>
+									<p>
+										The output from PyLint was more detailed than the output from Flake8, which would allow us to improve our code to a greater degree. Some 
+										errors were omitted from Flake8, such as the 'invalid-name' errors which are shown for the global variables in the file. However, the 
+										PyLint error for these global variables is not necessarily correct (and is not correct in this case) as PyLint is considering all of 
+										the variables outside of the main body to be constants. Some the variables in this file are not constants, but are still globals. 
+									</p>
+									<p>
+										In addition, Flake8 did not detect the style of the filename, the missing docstring, or the redefined outer name. 
+									</p>
+									<p>
+										It appears to me that PyLint is perhaps more detailed in the checks it performs, however, I would expect that each error received from 
+										PyLint should be scrutinised by the programmer, rather than immediately changed. There are some examples of the output above which should
+										not be changed, based on the output of PyLint. While Flake8 is less detailed, this perhaps means that the changes suggested are obvious 
+										and should require less scrutiny. 
+									</p>
+									<h4>Corrected Files</h4>
+									<p>
+										Following the output from both testing tools, I proceeded to correct the file as required.
+										<pre><code>
+""" # SOURCE OF CODE: https://docs.pylint.org/en/1.6.0/tutorial.html
+"""
+import string
+
+SHIFT = 3
+CHOICE = raw_input("would you like to encode or decode?")
+WORD = (raw_input("Please enter text"))
+LETTERS = string.ascii_letters + string.punctuation + string.digits
+ENCODED = ''
+if CHOICE == "encode":
+    for letter in WORD:
+        if letter == ' ':
+            ENCODED = ENCODED + ' '
+        else:
+            x = LETTERS.index(letter) + SHIFT
+            ENCODED = ENCODED + LETTERS[x]
+if CHOICE == "decode":
+    for letter in WORD:
+        if letter == ' ':
+            ENCODED = ENCODED + ' '
+        else:
+            x = LETTERS.index(letter) - SHIFT
+            ENCODED = ENCODED + LETTERS[x]
+
+print(ENCODED)
+
+										</code></pre>
+										Note that for the above, I changed the file to satisfy the requirements of PyLint, however, there are now some capitalised non-constant 
+										variables. This is not a good choice stylistically, and so should not have been implemented. 
+									</p>
+									
+								</div>
+                            </div>
+
+					</section>
+
+				<!-- Footer -->
+				<section id="footer">
+					<div class="inner">
+						<h2 class="major">Get in touch</h2>
+						<p>If you wish to contact me regarding any of the information on this site, please use one of the methods below.</p>
+						<form method="post" action="#">
+							<div class="fields">
+								<div class="field">
+									<label for="name">Name</label>
+									<input type="text" name="name" id="name" />
+								</div>
+								<div class="field">
+									<label for="email">Email</label>
+									<input type="email" name="email" id="email" />
+								</div>
+								<div class="field">
+									<label for="message">Message</label>
+									<textarea name="message" id="message" rows="4"></textarea>
+								</div>
+							</div>
+							<ul class="actions">
+								<li><input type="submit" value="Send Message"/></li>
+							</ul>
+						</form>
+						<ul class="contact">
+							<li class="icon solid fa-home">
+								Chelmsford<br />
+								United Kingdom<br />
+							</li>
+							<li class="icon solid fa-envelope"><a href="mailto:eb23659@essex.ac.uk">eb23659@essex.ac.uk</a></li>
+							<li class="icon brands fa-linkedin"><a href="https://www.linkedin.com/in/elliot-bedworth/" target="_blank">https://www.linkedin.com/in/elliot-bedworth/</a></li>
+						</ul>
+						<ul class="copyright">
+							<li>&copy; All rights reserved.</li><li>Design: <a href="http://html5up.net" target="_blank">HTML5 UP</a></li>
+						</ul>
+					</div>
+				</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="../../assets/js/jquery.min.js"></script>
+			<script src="../../assets/js/jquery.scrollex.min.js"></script>
+			<script src="../../assets/js/browser.min.js"></script>
+			<script src="../../assets/js/breakpoints.min.js"></script>
+			<script src="../../assets/js/util.js"></script>
+			<script src="../../assets/js/main.js"></script>
+
+	</body>
+</html>

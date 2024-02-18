@@ -1,0 +1,223 @@
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>E-Portfolio | Cryptography Programming</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../../assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="../../assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1><a href="../../index.html">E-Portfolio | <span style="color: #9ed0ff">Elliot Bedworth</span></a></h1>
+						<nav>
+							<a href="#menu">Menu</a>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<div class="inner">
+							<h2>Menu</h2>
+							<ul class="links">
+								<li><a href="../../index.html">Home</a></li>
+								<li><a href="../../about.html">About Me</a></li>
+								<li><a href="../../my-work.html">My Work</a></li>
+								<!-- <li><a href="../../journal.html">Journal</a></li> -->
+							</ul>
+							<a href="#" class="close">Close</a>
+						</div>
+					</nav>
+
+				<!-- Wrapper -->
+					<section id="wrapper">
+						<header>
+							<div class="inner">
+								<h2>Cryptography Programming Exercise</h2>
+                                <p>
+									In Unit 8, we were tasked with creating a Python program which takes a text file, encrypts the data the file, then writes the data
+                                    to a new file. 
+                                </p>
+							</div>
+						</header>
+
+						<!-- Content -->
+							<div class="wrapper">
+								<div class="inner">
+									<h3 class="major">My Implementation</h3>
+                                    <p>
+                                        I chose to use the AES encryption algorithm to implement the brief for this exercise. The main reason that I chose AES here was 
+                                        because we had elected to use the AES algorithm for our assessed work for this module. Exapnding on this, the reason that we chose
+                                        the AES algorithm for our assessed work was due to AES being widely accepted as currently the most secure encryption method widely 
+                                        available and reasonably usable. 
+                                    </p>
+                                    <p>
+                                        There are several examples available online for implementing the AES encryption algorithm in Python. I selected an implementation which 
+                                        fitted the requirement to encrypt data from a text file, as opposed to encrypting a bytes object. I could equally have used byte object 
+                                        encryption, but this would also have required additional steps in my program to convert the data from the text file from a string to 
+                                        bytes, and I felt as though such an implementation could become unnecessarily messy. The implementation which I used also follows an 
+                                        object-oriented approach, which I felt was relevant to the overall MSc course so far and in-keeping with the software I have been 
+                                        writing so far. 
+                                    </p>
+                                    <p>
+                                        As well as defining the AESCipher object, my program makes use of the Python sys library to accept arguments from the user when executing
+                                        the program. In this way, the user can run the program with the paths to the input and output files, meaning that nothing needs to be 
+                                        hard-coded in the program. The program will open the input file in read mode and read the data inside to a string variable. This string 
+                                        variable is then passed to an instance of the AESCipher class, using the 'encrypt' method to return an encrypted string of the same data. 
+                                        Finally, this encrypted string is written to a file with the path given as the second argument when running the program. 
+                                    </p>
+                                    <p>
+                                        The following is my entire final implementation:
+                                    </p>
+                                    <pre><code>
+"""Encrypt a file and save as a new file
+
+Args: 
+    in_file - Path to the input file
+    out_file - Path to the output file
+"""
+
+
+# Credit PaburoTC on GitHub
+# https://gist.github.com/PaburoTC/74f96510479d5129100b994d1c06885a
+
+import hashlib
+import sys
+from Crypto import Random
+from Crypto.Cipher import AES
+from base64 import b64encode, b64decode
+
+AES_KEY = "encryptionKey"
+
+in_file = sys.argv[1]
+out_file = sys.argv[2]
+
+class AESCipher(object):
+    def __init__(self, key):
+        self.block_size = AES.block_size
+        self.key = hashlib.sha256(key.encode()).digest()
+
+    def encrypt(self, plain_text):
+        plain_text = self.__pad(plain_text)
+        iv = Random.new().read(self.block_size)
+        cipher = AES.new(self.key, AES.MODE_CBC, iv)
+        encrypted_text = cipher.encrypt(plain_text.encode())
+        return b64encode(iv + encrypted_text).decode("utf-8")
+
+    def decrypt(self, encrypted_text):
+        encrypted_text = b64decode(encrypted_text)
+        iv = encrypted_text[:self.block_size]
+        cipher = AES.new(self.key, AES.MODE_CBC, iv)
+        plain_text = cipher.decrypt(
+            encrypted_text[self.block_size:]).decode("utf-8")
+        return self.__unpad(plain_text)
+
+    def __pad(self, plain_text):
+        number_of_bytes_to_pad = (
+            self.block_size - len(plain_text) % self.block_size)
+        ascii_string = chr(number_of_bytes_to_pad)
+        padding_str = number_of_bytes_to_pad * ascii_string
+        padded_plain_text = plain_text + padding_str
+        return padded_plain_text
+
+    @staticmethod
+    def __unpad(plain_text):
+        last_character = plain_text[len(plain_text) - 1:]
+        return plain_text[:-ord(last_character)]
+    
+def main():
+
+    # Create an ecnryption object
+    encrypter = AESCipher(AES_KEY)
+
+    # First read the data in in_file
+    with open(in_file, 'r') as f:
+        unencrypted_data = f.read()
+
+    # Encrypt the data
+    encrypted_data = encrypter.encrypt(unencrypted_data)
+
+    # Write encrypted data to file
+    with open(out_file, 'w') as f:
+        f.write(encrypted_data)
+
+
+if __name__ == "__main__":
+    main()
+
+                                    </code></pre>
+                                    <h3 class="major">GDPR</h3>
+                                    <p>
+                                        This exercise also asked us to consider if our implementation would meet GDPR regulations. I think this is not a clear question to answer, 
+                                        as GDPR is intentionally vague on specific technologies used to encrypt any data. However, I believe that the best answer is that AES 
+                                        certainly would be an acceptable algorithm to use in order to encrypt data covered by the GDPR, but this implementation is clearly only 
+                                        suitable for proof of concept, not for handling actual data. One example of this is the management of the secret AES key required to 
+                                        encrypt and decrypt the data. In my implementation, I have a constant variable called AES_KEY which contains a key ("encryptionKey") which
+                                        is then passed to my AESCipher object. In reality, this would be managed much more securely, using a more secure key with the optimal length
+                                        and complexity requirements, stored externally to the software directly accessing the key.
+                                    </p>
+                                </div>
+                            </div>
+
+					</section>
+
+				<!-- Footer -->
+				<section id="footer">
+					<div class="inner">
+						<h2 class="major">Get in touch</h2>
+						<p>If you wish to contact me regarding any of the information on this site, please use one of the methods below.</p>
+						<form method="post" action="#">
+							<div class="fields">
+								<div class="field">
+									<label for="name">Name</label>
+									<input type="text" name="name" id="name" />
+								</div>
+								<div class="field">
+									<label for="email">Email</label>
+									<input type="email" name="email" id="email" />
+								</div>
+								<div class="field">
+									<label for="message">Message</label>
+									<textarea name="message" id="message" rows="4"></textarea>
+								</div>
+							</div>
+							<ul class="actions">
+								<li><input type="submit" value="Send Message"/></li>
+							</ul>
+						</form>
+						<ul class="contact">
+							<li class="icon solid fa-home">
+								Chelmsford<br />
+								United Kingdom<br />
+							</li>
+							<li class="icon solid fa-envelope"><a href="mailto:eb23659@essex.ac.uk">eb23659@essex.ac.uk</a></li>
+							<li class="icon brands fa-linkedin"><a href="https://www.linkedin.com/in/elliot-bedworth/" target="_blank">https://www.linkedin.com/in/elliot-bedworth/</a></li>
+						</ul>
+						<ul class="copyright">
+							<li>&copy; All rights reserved.</li><li>Design: <a href="http://html5up.net" target="_blank">HTML5 UP</a></li>
+						</ul>
+					</div>
+				</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="../../assets/js/jquery.min.js"></script>
+			<script src="../../assets/js/jquery.scrollex.min.js"></script>
+			<script src="../../assets/js/browser.min.js"></script>
+			<script src="../../assets/js/breakpoints.min.js"></script>
+			<script src="../../assets/js/util.js"></script>
+			<script src="../../assets/js/main.js"></script>
+
+	</body>
+</html>

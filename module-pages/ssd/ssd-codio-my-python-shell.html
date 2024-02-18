@@ -1,0 +1,336 @@
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>E-Portfolio | Creating a Simple Python Shell</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../../assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="../../assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1><a href="../../index.html">E-Portfolio | <span style="color: #9ed0ff">Elliot Bedworth</span></a></h1>
+						<nav>
+							<a href="#menu">Menu</a>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<div class="inner">
+							<h2>Menu</h2>
+							<ul class="links">
+								<li><a href="../../index.html">Home</a></li>
+								<li><a href="../../about.html">About Me</a></li>
+								<li><a href="../../my-work.html">My Work</a></li>
+								<!-- <li><a href="../../journal.html">Journal</a></li> -->
+							</ul>
+							<a href="#" class="close">Close</a>
+						</div>
+					</nav>
+
+				<!-- Wrapper -->
+					<section id="wrapper">
+						<header>
+							<div class="inner">
+								<h2>Exploring a Simple Python Shell</h2>
+                                <p>
+									In Unit 7, we were asked to read two blogs which described different implementations of a shell/CLI built using Python. We were then 
+                                    tasked with implementing our own version. 
+                                </p>
+							</div>
+						</header>
+
+						<!-- Content -->
+							<div class="wrapper">
+								<div class="inner">
+									<h3 class="major">Background regarding</h3>
+                                    <h4>Danish Praka's (2018) Method</h4>
+                                    <p>
+                                        The <a href="https://danishpraka.sh/posts/shell-in-python/">first blog was written by Praka</a> (2018) and outlined a simple Python 
+                                        shell which also accommodated piping. The shell which was developed in this blog was written with a Linux operating system in mind 
+                                        and provided some simple functionality for navigating and modifying files. It was useful to see how certain Python libraries could 
+                                        be used to achieve the functionality required for this implementation. The use of the OS library in Python provides an easy way to 
+                                        navigate through directories, while the subprocess library provides a host of system commands which are familiar to those who are 
+                                        used to using the standard Linux shell. 
+                                        <pre><code>
+"""From https://danishpraka.sh/posts/shell-in-python/
+"""
+
+import subprocess
+import os
+
+## original implementation
+# def execute_commands(command):
+#     try:
+#         subprocess.run(command.split())
+#     except Exception:
+#         print("psh: command not found: {}"/format(command))
+
+
+def execute_commands(command):
+    """execute commands and handle piping"""
+    try:
+        if "|" in command:
+            # save for restoring later on
+            s_in, s_out = (0, 0)
+            s_in = os.dup(0)
+            s_out = os.dup(1)
+
+            # first command takes commandut from stdin
+            fdin = os.dup(s_in)
+
+            # iterate over all the commands that are piped
+            for cmd in command.split("|"):
+                # fdin will be stdin if it's the first iteration
+                # and the readable end of the pipe if not.
+                os.dup2(fdin, 0)
+                os.close(fdin)
+
+                # restore stdout if this is the last command
+                if cmd == command.split("|")[-1]:
+                    fdout = os.dup(s_out)
+                else:
+                    fdin, fdout = os.pipe()
+                
+                # redirect stdout to pipe
+                os.dup2(fdout, 1)
+                os.close(fdout)
+
+                try:
+                    subprocess.run(cmd.strip().split())
+                except Exception:
+                    print("psh: command not found: {}".format(cmd.strip()))
+
+            # restore stdout and stdin
+            os.dup2(s_in, 0)
+            os.dup2(s_out, 1)
+            os.close(s_in)
+            os.close(s_out)
+        else:
+            subprocess.run(command.split(" "))
+    except Exception:
+        print("psh: command not found: {}".format(command))
+
+
+def psh_cd(path):
+    """Convert to absolute path and change directory"""
+    try:
+        os.chdir(os.path.abspath(path))
+    except Exception:
+        print("cd: no such file or director: {}".format(path))
+
+
+def psh_help():
+    print("""psh: shell implementation in Python.
+          Supports all basic shell commands.""")
+    
+
+def main():
+    while True:
+        inp = input("$ ")
+        if inp == "exit":
+            break
+        elif inp[:3] == "cd ":
+            psh_cd(inp[3:])
+        elif inp == "help":
+            psh_help()
+        else:
+            execute_commands(inp)
+
+
+if '__main__' == __name__:
+    main()
+                                        </code></pre>
+                                    </p>
+                                    <h4>Gabor Szabo's method</h4>
+                                    <p>
+                                        <a href="https://code-maven.com/interactive-shell-with-cmd-in-python">Szabo's method</a> introduced a simpler but less-flexible 
+                                        implementation of a Python CLI. The implementation appeared to be more operating system agnostic, meaning the implementation could be the 
+                                        same for multiple operating systems. However, Szabo's implementation was not written to perform actual operations within the computer 
+                                        environment, but to provide the framework for a developer to build from, specifying further what each defined operation should do. 
+                                        Szabo makes use of the Python cmd library, which provides the functionality for the terminal to operate as the CLI does. 
+                                        <pre><code>
+""" From https://code-maven.com/interactive-shell-with-cmd-in-python
+"""
+
+from cmd import Cmd
+
+class MyPrompt(Cmd):
+    prompt = 'pb> '
+    intro = "Welcome! Type ? to list commands"
+
+    def do_exit(self, inp):
+        print("Bye")
+        return True
+    
+    def help_exit(self):
+        print("Exit the application.")
+
+    def do_add(self, inp):
+        print("Adding '{}'".format(inp))
+
+    #This is an alternative method to docstrings to add help text to commands
+    def help_add(self):
+        print("Add a new entry to the system.")
+
+    def default(self, inp):
+        if inp == 'x' or inp == 'q':
+            return self.do_exit(inp)
+        
+        print("Default: {}".format(inp))
+
+    do_EOF = do_exit
+    help_EOF = help_exit
+
+if __name__ == '__main__':
+    MyPrompt().cmdloop()
+                                        </code></pre>
+                                    </p>
+									<h3 class="major">My Implementation</h3>
+                                    <p>
+                                        My own implementation more closely followed Szabo's method. As the exercise required us to implement some specific 
+                                        functionality attached to a command word, I felt as though building on the framework from Szabo allowed me to do this most 
+                                        effectively. The following section shows the code for my completed shell. 
+                                        <pre><code>
+from cmd import Cmd
+import os
+
+class MyPrompt(Cmd):
+    prompt = "elliot's shell> "
+    intro = "Welcome! Type ? to list commands"
+
+    def do_exit(self, inp):
+        """Exit the application."""
+        print("Bye")
+        return True
+
+    def do_add(self, inp):
+        """Add two numbers together.
+        Syntax: ADD {Num1} {Num2}
+        Num1 and Num2 must be numerical.
+        """
+        val_list = []
+        str_list = inp.split(" ")
+        # inp should contain two numbers only
+        if len(str_list) != 2:
+            print("You may only add two numbers!")
+        else:
+            try:
+                # try to convert to either int or float, depending on isdigit
+                val_list = [int(x) if x.isdigit() else float(x) for x in str_list]
+                answer = val_list[0] + val_list[1]
+                print(answer)
+            except:
+                print("Only numbers can be added!")
+
+    def do_list(self, inp):
+        """Print current working directory"""
+        # get current directory
+        current_directory = os.listdir()
+        print(current_directory)
+
+    def default(self, inp):
+        if inp == 'x' or inp == 'q':
+            return self.do_exit(inp)
+        
+        print("Default: {}".format(inp))
+
+
+if __name__ == '__main__':
+    MyPrompt().cmdloop()
+                                        </code></pre>
+                                    </p>
+                                    <h3 class="major">Exercise Questions</h3>
+                                    <h4>What are the two main security vulnerabilities with your shell? </h4>
+                                    <p>
+                                        One potential vulnerability is sharing the contents of the working directory freely with the LIST command. This may expose sensitive 
+                                        information, depending on the context in which the shell is being run. The second vulnerability I managed to find occurs if a very 
+                                        large input string is entered into the command line. I pasted an 86000 letter string into the shell and there was a wait time of a few 
+                                        seconds after hitting enter, then nothing was returned from the shell, even the default message which should be printed. Presumably 
+                                        this could cause a denial of service, given a long enough string. 
+                                    </p>
+                                    <h4>What is one recommendation you would make to increase the security of the shell? </h4>
+                                    <p>
+                                        I would implement some behaviour to check the length of the input string and prevent very large strings being entered. After some 
+                                        research, I have found that some functionality close to this is possible by using the ‘precmd’ method which is included with the Cmd 
+                                        class. A large input string still causes a pause, however, I was able to enforce and error message and return from the shell before 
+                                        any execution was attempted. 
+                                    </p>
+                                    <h4>Provide a code example of changes which would improve the security of the shell. </h4>
+                                    <p>
+                                        My implementation of precmd can be seen below: 
+                                        <pre><code>
+def precmd(self, inp: str) -> str:
+    if len(inp) > 100:
+        print("String too long!")
+        return self.do_exit(inp)
+    
+    return super().precmd(inp)
+                                        </code></pre>
+                                    </p>
+								</div>
+                            </div>
+
+					</section>
+
+				<!-- Footer -->
+				<section id="footer">
+					<div class="inner">
+						<h2 class="major">Get in touch</h2>
+						<p>If you wish to contact me regarding any of the information on this site, please use one of the methods below.</p>
+						<form method="post" action="#">
+							<div class="fields">
+								<div class="field">
+									<label for="name">Name</label>
+									<input type="text" name="name" id="name" />
+								</div>
+								<div class="field">
+									<label for="email">Email</label>
+									<input type="email" name="email" id="email" />
+								</div>
+								<div class="field">
+									<label for="message">Message</label>
+									<textarea name="message" id="message" rows="4"></textarea>
+								</div>
+							</div>
+							<ul class="actions">
+								<li><input type="submit" value="Send Message"/></li>
+							</ul>
+						</form>
+						<ul class="contact">
+							<li class="icon solid fa-home">
+								Chelmsford<br />
+								United Kingdom<br />
+							</li>
+							<li class="icon solid fa-envelope"><a href="mailto:eb23659@essex.ac.uk">eb23659@essex.ac.uk</a></li>
+							<li class="icon brands fa-linkedin"><a href="https://www.linkedin.com/in/elliot-bedworth/" target="_blank">https://www.linkedin.com/in/elliot-bedworth/</a></li>
+						</ul>
+						<ul class="copyright">
+							<li>&copy; All rights reserved.</li><li>Design: <a href="http://html5up.net" target="_blank">HTML5 UP</a></li>
+						</ul>
+					</div>
+				</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="../../assets/js/jquery.min.js"></script>
+			<script src="../../assets/js/jquery.scrollex.min.js"></script>
+			<script src="../../assets/js/browser.min.js"></script>
+			<script src="../../assets/js/breakpoints.min.js"></script>
+			<script src="../../assets/js/util.js"></script>
+			<script src="../../assets/js/main.js"></script>
+
+	</body>
+</html>

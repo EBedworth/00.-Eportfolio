@@ -1,0 +1,202 @@
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>E-Portfolio | Cyclomatic Complexity</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../../assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="../../assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1><a href="../../index.html">E-Portfolio | <span style="color: #9ed0ff">Elliot Bedworth</span></a></h1>
+						<nav>
+							<a href="#menu">Menu</a>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<div class="inner">
+							<h2>Menu</h2>
+							<ul class="links">
+								<li><a href="../../index.html">Home</a></li>
+								<li><a href="../../about.html">About Me</a></li>
+								<li><a href="../../my-work.html">My Work</a></li>
+								<!-- <li><a href="../../journal.html">Journal</a></li> -->
+							</ul>
+							<a href="#" class="close">Close</a>
+						</div>
+					</nav>
+
+				<!-- Wrapper -->
+					<section id="wrapper">
+						<header>
+							<div class="inner">
+								<h2>Cyclomatic Complexity</h2>
+                                <p>
+									The Cyclomatic Complexity is commonly considered in modules on testing the validity of code design today. However, in your opinion, 
+                                    should it be? Does it remain relevant today? Specific to the focus of this module, is it relevant in our quest to develop secure 
+                                    software? Justify all opinions which support your argument and share your responses with your team.
+                                </p>
+							</div>
+						</header>
+
+						<!-- Content -->
+							<div class="wrapper">
+								<div class="inner">
+									<h3 class="major">Exploring the Cyclomatic Complexity's Relevance Today</h3>
+                                    <p>
+										Cyclomatic complexity remains an important metric in the development of software today. Automated testing tools, such as PyLint 
+                                        and flake8, include tests for cyclomatic complexity as part of their evaluation of software and companies continue to rely on the 
+                                        metric for evaluation of products which they send to market (Ebert et al., 2016). For industry, specifically, to persevere in 
+                                        valuing cyclomatic complexity indicates that there is some perceived value in measuring it. 
+									</p>
+									<p>
+										It is apparent, when reviewing academic literature on the subject of cyclomatic complexity, that there are many who disagree with that 
+                                        perception of value. Almost since its proposal in the 1970s (McCabe, 1976), critiques of the approach, particularly in terms of cases 
+                                        which can be missed (Shepperd, 1988), have existed. Whilst it has been documented and proven that such limitations exist within McCabe’s 
+                                        method for measuring cyclomatic complexity, I believe that it is most important to consider pragmatically if value is gained or lost 
+                                        from its use. 
+									</p>
+									<p>
+										To consider practical value, it is useful to start with a more general question than to examine how closely cyclomatic complexity performs 
+                                        to its intended purpose. I believe that the question: ‘does cyclomatic complexity influence the development of software positively or 
+                                        negatively?’ is one such practical question. To explore the answer to this, it is useful to have some metric of software quality to 
+                                        reference, for which the most suitable candidate, in this case, would be the ISO/IEC 25010:2011, subtitled ‘Systems and software Quality 
+                                        Requirements and Evaluation’ (ISO, 2017). However, for brevity and contextual relevance, I have considered the six architectural quality 
+                                        attributes listed in the course text (Pillai, 2017): modifiability, testability, scalability and performance, availability, security, and 
+                                        deployability. 
+									</p>
+									<h4>Modifiability</h4>
+									<p>
+										Cyclomatic complexity measures the number of possible paths through a given element of software. By measuring this complexity, and 
+                                        striving for a low measured value, the number of available paths must be reduced. I believe that complexity is the attribute where most 
+                                        improvement can be made by using cyclomatic complexity as a metric, as this natural reduction in possible paths through software elements 
+                                        naturally encourages the development of more, but smaller, software elements. This means that changes are easily made without risk of 
+                                        accidental impact to the wider system (assuming well designed software). 
+									</p>
+                                    <h4>Testability</h4>
+                                    <p>
+                                        Pillai (2017) defines testability as ‘how much a software system is amenable to demonstrating its faults through testing’. If we apply 
+                                        this definition to an element of software which does not consider cyclomatic complexity (and so can have a very large number of processes 
+                                        between input and output), it is reasonable to think that either some faults may go unnoticed (because certain areas of the software are 
+                                        not tested) or that many tests may need to be developed (to ensure the former does not occur). In this way, the metric of cyclomatic 
+                                        complexity again adds considerable value, enabling clear and concise testing to be carried out. 
+                                    </p>
+                                    <h4>Scalability and Performance</h4>
+                                    <p>
+                                        I believe that scalability and performance is not significantly improved by measuring cyclomatic complexity. It could be argued that the 
+                                        application of cyclomatic complexity metrics lead to programs with slightly more overheads than those where it is not implied, which would 
+                                        in turn have a slightly negative impact on performance, especially when scaling. However, I do believe the benefits far outweigh this 
+                                        situation. 
+                                    </p>
+                                    <h4>Availability</h4>
+                                    <p>
+                                        Improvements in availability can be indirectly linked to low cyclomatic complexity. Through the development of simpler and more easily 
+                                        maintainable software, availability would be expected to increase. 
+                                    </p>
+                                    <h4>Security</h4>
+                                    <p>
+                                        I believe that security is clearly improved, but again indirectly. Testability, maintainability and availability all directly impact 
+                                        security and I believe, as discussed previously, that low cyclomatic complexity improves these attributes. An interesting consideration is 
+                                        that a simple program may be easier for an attacker to understand and, in turn, exploit. However, the simplicity of a program also leaves 
+                                        far less room for exploitations to be missed by developers, so this may be naturally counteracted. 
+                                    </p>
+                                    <h4>Deployability</h4>
+                                    <p>
+                                        The tendency for low cyclomatic complexity to be found in more modular software also improves deployability. Maintainability is also 
+                                        improved by this characteristic, which becomes important following deployment. 
+                                    </p>
+                                    <h4>Summary</h4>
+                                    <p>
+                                        Considering the above attributes, I believe that, overall, cyclomatic complexity is a metric which drives improvement towards ‘better’ 
+                                        software, when evaluated against standardised quality attributes. Whilst I appreciate that cyclomatic complexity is not a perfect 
+                                        measurement of all types of complexity, I believe that it still plays a valuable role in identifying software which is too complex and 
+                                        could be improved. One particular characteristic of cyclomatic complexity which I feel makes it a useful tool is its simplicity and, by 
+                                        extension, its practicality. This simplicity means that it is easy for automated tools to calculate and to produce an output which a 
+                                        developer can quickly understand and use to improve their code, which is, broadly speaking, the whole point of testing at all. 
+                                    </p>
+                                    <h3 class="major">References</h3>
+                                    <p>
+                                        Ebert, C., Cain, J., Antoniol, G., Counsell, S. & Laplante, P. (2016) Cyclomatic complexity. IEEE software 33(6): 27-29.
+                                    </p>
+                                    <p>
+                                        McCabe, T.J. (1976) A complexity measure. IEEE Transactions on software Engineering (4): 308-320.
+                                    </p>
+                                    <p>
+                                        Shepperd, M. (1988) A critique of cyclomatic complexity as a software metric. Software Engineering Journal 3(2): 30-36.
+                                    </p>
+                                    <p>
+                                        ISO (2017) Systems and software engineering – Systems and software Quality Requirements and Evaluation (SQuaRE). ISO/IEC 25010:2011. 
+                                        Geneva: International Organization for Standardization.
+                                    </p>
+                                    <p>
+                                        Pillai, A. B. (2017) Software architecture with Python: design and architect highly scalable, robust, clean, and high performance 
+                                        applications in Python. 1st ed. PACKT Publishing.
+                                    </p>
+								</div>
+                            </div>
+
+					</section>
+
+				<!-- Footer -->
+				<section id="footer">
+					<div class="inner">
+						<h2 class="major">Get in touch</h2>
+						<p>If you wish to contact me regarding any of the information on this site, please use one of the methods below.</p>
+						<form method="post" action="#">
+							<div class="fields">
+								<div class="field">
+									<label for="name">Name</label>
+									<input type="text" name="name" id="name" />
+								</div>
+								<div class="field">
+									<label for="email">Email</label>
+									<input type="email" name="email" id="email" />
+								</div>
+								<div class="field">
+									<label for="message">Message</label>
+									<textarea name="message" id="message" rows="4"></textarea>
+								</div>
+							</div>
+							<ul class="actions">
+								<li><input type="submit" value="Send Message"/></li>
+							</ul>
+						</form>
+						<ul class="contact">
+							<li class="icon solid fa-home">
+								Chelmsford<br />
+								United Kingdom<br />
+							</li>
+							<li class="icon solid fa-envelope"><a href="mailto:eb23659@essex.ac.uk">eb23659@essex.ac.uk</a></li>
+							<li class="icon brands fa-linkedin"><a href="https://www.linkedin.com/in/elliot-bedworth/" target="_blank">https://www.linkedin.com/in/elliot-bedworth/</a></li>
+						</ul>
+						<ul class="copyright">
+							<li>&copy; All rights reserved.</li><li>Design: <a href="http://html5up.net" target="_blank">HTML5 UP</a></li>
+						</ul>
+					</div>
+				</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="../../assets/js/jquery.min.js"></script>
+			<script src="../../assets/js/jquery.scrollex.min.js"></script>
+			<script src="../../assets/js/browser.min.js"></script>
+			<script src="../../assets/js/breakpoints.min.js"></script>
+			<script src="../../assets/js/util.js"></script>
+			<script src="../../assets/js/main.js"></script>
+
+	</body>
+</html>

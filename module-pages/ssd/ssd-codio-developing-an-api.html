@@ -1,0 +1,212 @@
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>E-Portfolio | Developing an API</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../../assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="../../assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1><a href="../../index.html">E-Portfolio | <span style="color: #9ed0ff">Elliot Bedworth</span></a></h1>
+						<nav>
+							<a href="#menu">Menu</a>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<div class="inner">
+							<h2>Menu</h2>
+							<ul class="links">
+								<li><a href="../../index.html">Home</a></li>
+								<li><a href="../../about.html">About Me</a></li>
+								<li><a href="../../my-work.html">My Work</a></li>
+								<!-- <li><a href="../../journal.html">Journal</a></li> -->
+							</ul>
+							<a href="#" class="close">Close</a>
+						</div>
+					</nav>
+
+				<!-- Wrapper -->
+					<section id="wrapper">
+						<header>
+							<div class="inner">
+								<h2>Developing an API for a Distributed Environment</h2>
+                                <p>
+									In Unit 9, we were asked to run some existing code for creating an API. We were asked to to answer some questions on the functionality of 
+                                    the API and then to create an API based around our assessed work which will be submitted in Unit 11.  
+                                </p>
+							</div>
+						</header>
+
+						<!-- Content -->
+							<div class="wrapper">
+								<div class="inner">
+									<h3 class="major">Original API Code</h3>
+                                    <p>
+                                        We were initially provided with some code to create an API running on the Flask framework for Python web applications. The code we were 
+                                        provided actually was quite challenging to run successfully with the instructions provided, something which I have addressed in the 
+                                        answers to my questions below. 
+                                    </p>
+                                    <pre><code>
+from flask import Flask
+from flask_restful import Api, Resource, reqparse
+ 
+app = Flask(__name__)
+api = Api(app)
+ 
+users = [
+    {
+        "name": "James",
+        "age": 30,
+        "occupation": "Network Engineer"
+    },
+    {
+        "name": "Ann",
+        "age": 32,
+        "occupation": "Doctor"
+    },
+    {
+        "name": "Jason",
+        "age": 22,
+        "occupation": "Web Developer"
+    }
+]
+ 
+class User(Resource):
+    def get(self, name):
+        for user in users:
+            if(name == user["name"]):
+                return user, 200
+        return "User not found", 404
+ 
+    def post(self, name):
+        parser = reqparse.RequestParser()
+        parser.add_argument("age")
+        parser.add_argument("occupation")
+        args = parser.parse_args()
+ 
+        for user in users:
+            if(name == user["name"]):
+                return "User with name {} already exists".format(name), 400
+ 
+        user = {
+            "name": name,
+            "age": args["age"],
+            "occupation": args["occupation"]
+        }
+        users.append(user)
+        return user, 201
+ 
+    def put(self, name):
+        parser = reqparse.RequestParser()
+        parser.add_argument("age")
+        parser.add_argument("occupation")
+        args = parser.parse_args()
+ 
+        for user in users:
+            if(name == user["name"]):
+                user["age"] = args["age"]
+                user["occupation"] = args["occupation"]
+                return user, 200
+        
+        user = {
+            "name": name,
+            "age": args["age"],
+            "occupation": args["occupation"]
+        }
+        users.append(user)
+        return user, 201
+ 
+    def delete(self, name):
+        global users
+        users = [user for user in users if user["name"] != name]
+        return "{} is deleted.".format(name), 200
+      
+api.add_resource(User, "/user/<string:name>")
+ 
+app.run(debug=True)
+                                    </code></pre>
+                                    <h3 class="major">Exercise Questions</h3>
+                                    <h4>Run the api.py code. Take a screenshot of the terminal output. What command did you use to compile and run the code?</h4>
+                                    <p>
+                                        The first command I had to use was ‘pip install –user flask’. This was required because flask does not come installed by default with 
+                                        Jupyter Notebook, so it must be installed as the code uses the flask module. --user was necessary as we do not have the necessary 
+                                        permissions to install flask, so --user allows us to make the installation just within our user space. I had to follow the same procedure 
+                                        to install flask_restful.
+                                    </p>
+                                    <p>    
+                                        After these had been installed, I ran ‘python3 API.py’ to run the code. 
+                                    </p>
+                                    <p>
+                                        <img src="img/flask-API-q1.png">
+                                    </p>
+                                    <h4>Run the following command at the terminal prompt: w3m http://127.0.0.1:5000/user/Ann<br>
+                                        What happens when this command is run and why?</h4>
+                                </div>
+                            </div>
+
+					</section>
+
+				<!-- Footer -->
+				<section id="footer">
+					<div class="inner">
+						<h2 class="major">Get in touch</h2>
+						<p>If you wish to contact me regarding any of the information on this site, please use one of the methods below.</p>
+						<form method="post" action="#">
+							<div class="fields">
+								<div class="field">
+									<label for="name">Name</label>
+									<input type="text" name="name" id="name" />
+								</div>
+								<div class="field">
+									<label for="email">Email</label>
+									<input type="email" name="email" id="email" />
+								</div>
+								<div class="field">
+									<label for="message">Message</label>
+									<textarea name="message" id="message" rows="4"></textarea>
+								</div>
+							</div>
+							<ul class="actions">
+								<li><input type="submit" value="Send Message"/></li>
+							</ul>
+						</form>
+						<ul class="contact">
+							<li class="icon solid fa-home">
+								Chelmsford<br />
+								United Kingdom<br />
+							</li>
+							<li class="icon solid fa-envelope"><a href="mailto:eb23659@essex.ac.uk">eb23659@essex.ac.uk</a></li>
+							<li class="icon brands fa-linkedin"><a href="https://www.linkedin.com/in/elliot-bedworth/" target="_blank">https://www.linkedin.com/in/elliot-bedworth/</a></li>
+						</ul>
+						<ul class="copyright">
+							<li>&copy; All rights reserved.</li><li>Design: <a href="http://html5up.net" target="_blank">HTML5 UP</a></li>
+						</ul>
+					</div>
+				</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="../../assets/js/jquery.min.js"></script>
+			<script src="../../assets/js/jquery.scrollex.min.js"></script>
+			<script src="../../assets/js/browser.min.js"></script>
+			<script src="../../assets/js/breakpoints.min.js"></script>
+			<script src="../../assets/js/util.js"></script>
+			<script src="../../assets/js/main.js"></script>
+
+	</body>
+</html>
