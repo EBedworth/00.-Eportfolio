@@ -1,0 +1,226 @@
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>E-Portfolio | Comparing Linters</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../../assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="../../assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1><a href="../../index.html">E-Portfolio | <span style="color: #9ed0ff">Elliot Bedworth</span></a></h1>
+						<nav>
+							<a href="#menu">Menu</a>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<div class="inner">
+							<h2>Menu</h2>
+							<ul class="links">
+								<li><a href="../../index.html">Home</a></li>
+								<li><a href="../../about.html">About Me</a></li>
+								<li><a href="../../my-work.html">My Work</a></li>
+								<!-- <li><a href="../../journal.html">Journal</a></li> -->
+							</ul>
+							<a href="#" class="close">Close</a>
+						</div>
+					</nav>
+
+				<!-- Wrapper -->
+					<section id="wrapper">
+						<header>
+							<div class="inner">
+								<h2>Comparing Linters</h2>
+                                <p>
+									Given some (bad) Python code, run it through a variety of quality checking tools. Compare the output from each tool and 
+									compare the effectiveness of each.
+								</p>                                
+							</div>
+						</header>
+
+						<!-- Content -->
+							<div class="wrapper">
+								<div class="inner">
+									<h3>Test Code</h3>
+									<p>
+										The following questionable code was provided, to by run through the code quality checking tools:
+										<pre><code>
+
+import io
+from math import *
+
+
+from time import time
+
+some_global_var = 'GLOBAL VAR NAMES SHOULD BE IN ALL_CAPS_WITH_UNDERSCOES'
+
+def multiply(x, y):
+    """
+    This returns the result of a multiplation of the inputs
+    """
+    some_global_var = 'this is actually a local variable...'
+    result = x* y
+    return result
+    if result == 777:
+        print("jackpot!")
+
+def is_sum_lucky(x, y):
+    """This returns a string describing whether or not the sum of input is lucky
+    This function first makes sure the inputs are valid and then calculates the
+    sum. Then, it will determine a message to return based on whether or not
+    that sum should be considered "lucky"
+    """
+    if x != None:
+        if y is not None:
+            result = x+y;
+            if result == 7:
+                return 'a lucky number!'
+            else:
+                return( 'an unlucky number!')
+
+            return ('just a normal number')
+
+class SomeClass:
+
+    def __init__(self, some_arg,  some_other_arg, verbose = False):
+        self.some_other_arg  =  some_other_arg
+        self.some_arg        =  some_arg
+        list_comprehension = [((100/value)*pi) for value in some_arg if value != 0]
+        time = time()
+        from datetime import datetime
+        date_and_time = datetime.now()
+        return
+										</code></pre>
+									</p>
+									<h3>Linter Outputs</h3>
+									<p>
+										The first tool that the code was quality checked with was PyLint. The output from PyLint was very detailed, and contained
+										more areas to be improved than any of the other tools. PyLint also provides the name of the violation and the reference
+										clause, if the relevant standard needs to be checked.
+										<br>
+										<div class="box alt">
+											<div class="row gtr-uniform">
+												<div class="col-12">
+													<span class="image fit"><img src="../../images/module-img/sepm/Unit-10-pylint.png" alt=""/></span></div>
+											</div>
+										</div>
+										Next, I tested with PyFlakes. PyFlakes returned significantly fewer mistakes to the terminal. The reason appears to be that 
+										PyFlakes is not checking for errors such as whitespace at the end of a line, but is only really testing for coded errors. 
+										You can see that all of the points reported by PyFlakes are related to variables or imports:
+										<br>
+										<br>
+										<div class="box alt">
+											<div class="row gtr-uniform">
+												<div class="col-12">
+													<span class="image fit"><img src="../../images/module-img/sepm/Unit-10-pyflakes.png" alt="" /></span></div>
+											</div>
+										</div>
+										PyCodeStyle seemed to be almost the opposite to PyFlakes, instead focusing on errors like whitespace usage and the number of 
+										lines between code. The output format is easily readbale and consistent with both of the other tools used so far.
+										<br>
+										<br>
+										<div class="box alt">
+											<div class="row gtr-uniform">
+												<div class="col-12">
+													<span class="image fit"><img src="../../images/module-img/sepm/Unit-10-pycodestyle.png" alt="" /></span></div>
+											</div>
+										</div>
+										PyDocStyle is different altogether from the other three tools, and is instead examing the docstrings used throughout the code.
+										It gives specific information about missing docstrings but also about the tone and personness used in the language. 
+										<br>
+										<br>
+										<div class="box alt">
+											<div class="row gtr-uniform">
+												<div class="col-12">
+													<span class="image fit"><img src="../../images/module-img/sepm/Unit-10-pydocstyle.png" alt="" /></span></div>
+											</div>
+										</div>
+									</p>
+									<h3>Tool Comparison</h3>
+									<p>
+										All of these tools serve the same overarching purpose, but with specific differences that make them useful. Of the four tools 
+										tested, I would say that PyLint appears to be the most 'all-rounded' tool, for checking most things in the code. If you were 
+										only able to use one tool, PyLint would probably be the one to select. However, it's long output could be a bit disheartening, 
+										especially with very large amounts of code, and might then encourage shortcuts to be taken. 
+									</p>
+									<p>
+										PyFlakes and PyCodeStyle, when combined, perform a similar function to PyLint. It may be more user friendly to use one of these 
+										tools very often, and fix a small number of errors, than to use PyLint and try to fix everything. This would be particularly true 
+										if deviating from PEP-8 intentionally, such as to follow a particular in-house standard instead. 
+									</p>
+									<p>
+										PyDocStyle performs a different function altogether, checking the docstrings and elements which will become the documentation. 
+										Whichever of the above tools was chosen, PyDocStyle would always also be chosen to be run alongside it.
+									</p>
+									<p>
+										Overall, it seems that the best approach to get full code coverage for errors is to use a combination of all of the tools, to ensure 
+										the code is checked against as many potential errors as possible. 
+									</p>
+                                </div>
+                            </div>
+
+					</section>
+
+				<!-- Footer -->
+				<section id="footer">
+					<div class="inner">
+						<h2 class="major">Get in touch</h2>
+						<p>If you wish to contact me regarding any of the information on this site, please use one of the methods below.</p>
+						<form method="post" action="#">
+							<div class="fields">
+								<div class="field">
+									<label for="name">Name</label>
+									<input type="text" name="name" id="name" />
+								</div>
+								<div class="field">
+									<label for="email">Email</label>
+									<input type="email" name="email" id="email" />
+								</div>
+								<div class="field">
+									<label for="message">Message</label>
+									<textarea name="message" id="message" rows="4"></textarea>
+								</div>
+							</div>
+							<ul class="actions">
+								<li><input type="submit" value="Send Message"/></li>
+							</ul>
+						</form>
+						<ul class="contact">
+							<li class="icon solid fa-home">
+								Chelmsford<br />
+								United Kingdom<br />
+							</li>
+							<li class="icon solid fa-envelope"><a href="mailto:eb23659@essex.ac.uk">eb23659@essex.ac.uk</a></li>
+							<li class="icon brands fa-linkedin"><a href="https://www.linkedin.com/in/elliot-bedworth/" target="_blank">https://www.linkedin.com/in/elliot-bedworth/</a></li>
+						</ul>
+						<ul class="copyright">
+							<li>&copy; All rights reserved.</li><li>Design: <a href="http://html5up.net" target="_blank">HTML5 UP</a></li>
+						</ul>
+					</div>
+				</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="../../assets/js/jquery.min.js"></script>
+			<script src="../../assets/js/jquery.scrollex.min.js"></script>
+			<script src="../../assets/js/browser.min.js"></script>
+			<script src="../../assets/js/breakpoints.min.js"></script>
+			<script src="../../assets/js/util.js"></script>
+			<script src="../../assets/js/main.js"></script>
+
+	</body>
+</html>

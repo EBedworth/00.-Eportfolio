@@ -1,0 +1,148 @@
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>E-Portfolio | Data Structures</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../../assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="../../assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1><a href="../../index.html">E-Portfolio | <span style="color: #9ed0ff">Elliot Bedworth</span></a></h1>
+						<nav>
+							<a href="#menu">Menu</a>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<div class="inner">
+							<h2>Menu</h2>
+							<ul class="links">
+								<li><a href="../../index.html">Home</a></li>
+								<li><a href="../../about.html">About Me</a></li>
+								<li><a href="../../my-work.html">My Work</a></li>
+								<!-- <li><a href="../../journal.html">Journal</a></li> -->
+							</ul>
+							<a href="#" class="close">Close</a>
+						</div>
+					</nav>
+
+				<!-- Wrapper -->
+					<section id="wrapper">
+						<header>
+							<div class="inner">
+								<h2>Data Structures</h2>
+
+                                <p>In Unit 3, we were asked to read an article by Dicheva & Hodge (2018) detailing a game they had developed to help students of Computer Science to 
+									understand the concept of stacks and queues. We were asked to consider a system which we use frequently, and what data structures might be in use
+									in the backend of that system. 
+                                </p>
+							</div>
+						</header>
+
+						<!-- Content -->
+							<div class="wrapper">
+								<div class="inner">
+									<h3 class="major">Online Banking</h3>
+									<p>
+										The online system that I have chosen to reflect on is an online banking app for a mobile phone. Due to there being a number of banking options, there
+										are (almost) an equivalent amount of banking apps available. And whilst these apps do have different features, the key features are generally common across
+										them all.
+									</p>
+									<p>
+										In terms of generic features (which I will focus on for this refelection, as opposed to more app-specific features), the following things will usually be 
+										present in mobile banking app:
+										<ul>
+											<li>Customer details</li>
+											<li>List of accounts</li>
+											<li>Account details (number, balance, available)</li>
+											<li>Correspondence</li>
+											<li>Card services (cancel, order new card)</li>
+										</ul>
+										I would expect that the things we might call 'objects' from this list would each be a data structure, things like 'Customer', 'Account', 'Card'. It's possible 
+										that the actual structures are more specific than this - for example, maybe there are separate structures for 'Savings Account' and 'Current Account'. It 
+										could also be the case that a data structure for 'Account' has an element which determines the type of account. So this structure might contain a string 'accType'
+										which specifies the type of account in use. In reality, the data structures involved will be far more diverse and specific than the simple example I have provided
+										here (Kittlaus & Krahl, 1998). 
+									</p>
+									<p>
+										In reality, as most of the banking data will be held across a number of databases, the data structures in use will likely be structured as related to the schema
+										of the relevant tables included in the database. This likely also includes some data structures which are used specifically to relate different data together (in 
+										the <i>relational</i> databases). When we think about the algorithms which banking systems use to calculate the rates at which they can offer loans to their customers,
+										we can see that very complex structures must be required to collate a large collection of data about an individual, before processing it through whichever system 
+										generates the final decision. 
+									</p>
+									<p>
+										<b><u>References</u></b>
+										<br>
+										<br>
+										Kittlaus, H.B. & Krahl, D. (1998) The SIZ banking data Model. In Handbook on architectures of information systems (pp. 723-743). Berlin, Heidelberg: Springer 
+										Berlin Heidelberg.
+									</p>
+                                </div>
+                            </div>
+
+					</section>
+
+				<!-- Footer -->
+				<section id="footer">
+					<div class="inner">
+						<h2 class="major">Get in touch</h2>
+						<p>If you wish to contact me regarding any of the information on this site, please use one of the methods below.</p>
+						<form method="post" action="#">
+							<div class="fields">
+								<div class="field">
+									<label for="name">Name</label>
+									<input type="text" name="name" id="name" />
+								</div>
+								<div class="field">
+									<label for="email">Email</label>
+									<input type="email" name="email" id="email" />
+								</div>
+								<div class="field">
+									<label for="message">Message</label>
+									<textarea name="message" id="message" rows="4"></textarea>
+								</div>
+							</div>
+							<ul class="actions">
+								<li><input type="submit" value="Send Message"/></li>
+							</ul>
+						</form>
+						<ul class="contact">
+							<li class="icon solid fa-home">
+								Chelmsford<br />
+								United Kingdom<br />
+							</li>
+							<li class="icon solid fa-envelope"><a href="mailto:eb23659@essex.ac.uk">eb23659@essex.ac.uk</a></li>
+							<li class="icon brands fa-linkedin"><a href="https://www.linkedin.com/in/elliot-bedworth/" target="_blank">https://www.linkedin.com/in/elliot-bedworth/</a></li>
+						</ul>
+						<ul class="copyright">
+							<li>&copy; All rights reserved.</li><li>Design: <a href="http://html5up.net" target="_blank">HTML5 UP</a></li>
+						</ul>
+					</div>
+				</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="../../assets/js/jquery.min.js"></script>
+			<script src="../../assets/js/jquery.scrollex.min.js"></script>
+			<script src="../../assets/js/browser.min.js"></script>
+			<script src="../../assets/js/breakpoints.min.js"></script>
+			<script src="../../assets/js/util.js"></script>
+			<script src="../../assets/js/main.js"></script>
+
+	</body>
+</html>

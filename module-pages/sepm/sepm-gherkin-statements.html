@@ -1,0 +1,155 @@
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>E-Portfolio | Gherkin Statements</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../../assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="../../assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1><a href="../../index.html">E-Portfolio | <span style="color: #9ed0ff">Elliot Bedworth</span></a></h1>
+						<nav>
+							<a href="#menu">Menu</a>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<div class="inner">
+							<h2>Menu</h2>
+							<ul class="links">
+								<li><a href="../../index.html">Home</a></li>
+								<li><a href="../../about.html">About Me</a></li>
+								<li><a href="../../my-work.html">My Work</a></li>
+								<!-- <li><a href="../../journal.html">Journal</a></li> -->
+							</ul>
+							<a href="#" class="close">Close</a>
+						</div>
+					</nav>
+
+				<!-- Wrapper -->
+					<section id="wrapper">
+						<header>
+							<div class="inner">
+								<h2>Gherkin Statements</h2>
+
+                                <p>For Seminar 2, which took place during Unit 2, we were tasked with preparing a sequence of Gherkin statements based on some function, which we 
+									could choose from several options. 
+                                </p>
+							</div>
+						</header>
+
+						<!-- Content -->
+							<div class="wrapper">
+								<div class="inner">
+									<h3 class="major">Gherkin Language</h3>
+									<p>
+										This week, we read the 'Behave - Behaviour Driven Development' documentation, which describes syntax for the Gherkin language. Gherkin is used 
+										to capture requirements of different functions in an easily-readable format, which can be shared across both technical and non-technical teams. 
+										Gherkin uses very simple keywords to define a pattern of behaviour, given some 'input' actions, explaining what the resulting actions should be. 
+									</p>
+									<h3 class="major">Gherkin Statements</h3>
+									<p>
+										We were provided with a list of several options, one of which we should develop 3 Gherkin statements to describe interactions with those systems. 
+										I chose the option 'Using a new coffee machine', and developed three Gherkin statements to describe the expected behaviour of different functions
+										which might be necessary for a new coffee machine.
+									</p>
+									<p>
+										<blockquote>
+											<b>Scenario:</b> Running the cleaning cycle for the coffee machine<br>
+											<b>Given</b> there is no coffee pod inserted into the machine<br>
+											<b>And</b> there is water in the water tank<br>
+											<b>And</b> there is a cup under the spout<br>
+											<b>When</b> the ‘Americano’, ‘Latte’ and ‘Cappuccino’ buttons are held simultaneously for three seconds<br>
+											<b>Then</b> the cleaning cycle should start
+										</blockquote>
+										<blockquote>
+											<b>Scenario:</b> Making a cup of coffee<br>
+											<b>Given</b> there is water in the water tank<br>
+											<b>And</b> there is a cup under the spout<br>
+											<b>When</b> the user inserts a coffee pod<br>
+											<b>And</b> the user selects a drink<br>
+											<b>Then</b> the machine will make the drink<br>
+											<b>But</b> if the drink also requires milk<br>
+											<b>And</b> the milk tank is empty<br>
+											<b>Then</b> the machine will notify the user to add milk<br>
+											<b>When</b> the user adds milk<br>
+											<b>Then</b> the machine will make the drink<br>
+										</blockquote>
+										<blockquote>
+											<b>Scenario:</b> Refilling the water tank<br>
+											<b>Given</b> the machine is turned on<br>
+											<b>And</b> there is no water in the water tank<br>
+											<b>Then</b> the ‘refill tank’ light will flash<br>
+											<b>And</b> the machine will not try to make any drink<br>
+											<b>When</b> the user refills the tank<br>
+											<b>Then</b> the machine will be able to make drinks again<br>
+										</blockquote>
+									</p>
+                                </div>
+                            </div>
+
+					</section>
+
+				<!-- Footer -->
+				<section id="footer">
+					<div class="inner">
+						<h2 class="major">Get in touch</h2>
+						<p>If you wish to contact me regarding any of the information on this site, please use one of the methods below.</p>
+						<form method="post" action="#">
+							<div class="fields">
+								<div class="field">
+									<label for="name">Name</label>
+									<input type="text" name="name" id="name" />
+								</div>
+								<div class="field">
+									<label for="email">Email</label>
+									<input type="email" name="email" id="email" />
+								</div>
+								<div class="field">
+									<label for="message">Message</label>
+									<textarea name="message" id="message" rows="4"></textarea>
+								</div>
+							</div>
+							<ul class="actions">
+								<li><input type="submit" value="Send Message"/></li>
+							</ul>
+						</form>
+						<ul class="contact">
+							<li class="icon solid fa-home">
+								Chelmsford<br />
+								United Kingdom<br />
+							</li>
+							<li class="icon solid fa-envelope"><a href="mailto:eb23659@essex.ac.uk">eb23659@essex.ac.uk</a></li>
+							<li class="icon brands fa-linkedin"><a href="https://www.linkedin.com/in/elliot-bedworth/" target="_blank">https://www.linkedin.com/in/elliot-bedworth/</a></li>
+						</ul>
+						<ul class="copyright">
+							<li>&copy; All rights reserved.</li><li>Design: <a href="http://html5up.net" target="_blank">HTML5 UP</a></li>
+						</ul>
+					</div>
+				</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="../../assets/js/jquery.min.js"></script>
+			<script src="../../assets/js/jquery.scrollex.min.js"></script>
+			<script src="../../assets/js/browser.min.js"></script>
+			<script src="../../assets/js/breakpoints.min.js"></script>
+			<script src="../../assets/js/util.js"></script>
+			<script src="../../assets/js/main.js"></script>
+
+	</body>
+</html>

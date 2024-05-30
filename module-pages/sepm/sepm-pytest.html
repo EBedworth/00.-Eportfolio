@@ -1,0 +1,218 @@
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>E-Portfolio | PyTest</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../../assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="../../assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1><a href="../../index.html">E-Portfolio | <span style="color: #9ed0ff">Elliot Bedworth</span></a></h1>
+						<nav>
+							<a href="#menu">Menu</a>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<div class="inner">
+							<h2>Menu</h2>
+							<ul class="links">
+								<li><a href="../../index.html">Home</a></li>
+								<li><a href="../../about.html">About Me</a></li>
+								<li><a href="../../my-work.html">My Work</a></li>
+								<!-- <li><a href="../../journal.html">Journal</a></li> -->
+							</ul>
+							<a href="#" class="close">Close</a>
+						</div>
+					</nav>
+
+				<!-- Wrapper -->
+					<section id="wrapper">
+						<header>
+							<div class="inner">
+								<h2>PyTest</h2>
+
+                                <p>In Unit 6, we were given some code for a simple wallet, and some unit tests which all passed given the code for the wallet. We were then asked 
+									to modify the code so that the tests did not pass. 
+                                </p>
+							</div>
+						</header>
+
+						<!-- Content -->
+							<div class="wrapper">
+								<div class="inner">
+									<h3 class="major">Starting Code</h3>
+									<p>
+										To start, we were provided the code for the wallet, as well as the successful unit tests. These were as follows:
+										<br>
+										<br>
+										<b>Wallet</b>
+										<pre><code>
+# code source: https://semaphoreci.com/community/tutorials/testing-python-applications-with-pytest
+# wallet.py
+ class InsufficientAmount(Exception):
+    pass
+  
+class Wallet(object):
+     def __init__(self, initial_amount=0):
+        self.balance = initial_amount
+ 
+    def spend_cash(self, amount):
+        if self.balance < amount:
+            raise InsufficientAmount('Not enough available to spend {}'.format(amount))
+        self.balance -= amount
+ 
+    def add_cash(self, amount):
+        self.balance += amount
+										</code></pre>
+										<b>Tests</b>
+										<br>
+										<br>
+										<pre><code>
+# code source: https://semaphoreci.com/community/tutorials/testing-python-applications-with-pytest
+ # test_wallet.py
+ import pytest
+from wallet import Wallet, InsufficientAmount
+
+def test_default_initial_amount():
+    wallet = Wallet()
+    assert wallet.balance == 0
+ 
+def test_setting_initial_amount():
+    wallet = Wallet(100)
+    assert wallet.balance == 100
+ 
+def test_wallet_add_cash():
+    wallet = Wallet(10)
+    wallet.add_cash(90)
+    assert wallet.balance == 100
+ 
+def test_wallet_spend_cash():
+    wallet = Wallet(20)
+    wallet.spend_cash(10)
+    assert wallet.balance == 10
+ 
+def test_wallet_spend_cash_raises_exception_on_insufficient_amount():
+    wallet = Wallet()
+    with pytest.raises(InsufficientAmount):
+        wallet.spend_cash(100)
+										</code></pre>
+									</p>
+									<p>
+										I found this exercise to be too vague. The task is only written as 'Amend the code so that the tests fail.'. It does not specify if the changes
+										should be to the wallet code or to the test code. There are an infinite number of ways to make the tests fail, so I feel that the actual task
+										should have been more explicit in what was required. Nonetheless, I did look at the code and make some observations. 
+									</p>
+									<p>
+										First off, the code in wallet does not check anything which is being passed in, so it is possible to pass negative numbers, or long floating point 
+										numbers, or even strings to the wallet and probably have some undesired effect. It's possible this is a pythonic approach (duck typing), but it is
+										possible to initialise a wallet with a character and add further characters to it. Also, there is no type hinting to suggest this shouldn't be the 
+										use case. 
+									</p>
+									<p>
+										Secondly, there is no limit to the number of digits that can be entered when spending in the wallet. Again, even though this may be intentional, it 
+										seems as though there should be some limit to the number of digits in the numbers that can be added/subtracted from the balance. 
+									</p>
+									<p>
+										In the end, although I did make experimental changes to the tests to see how the code would work given different inputs, it did not feel like there 
+										was any point changing the wallet.py code to make the tests fail. All that would be required would be changing a mathematical operator in each method
+										and all of the tests would fail anyway. Below is the code that I ended up with for the tests: 
+										<code><pre>
+# code source: https://semaphoreci.com/community/tutorials/testing-python-applications-with-pytest
+# test_wallet.py
+import pytest
+from wallet import Wallet, InsufficientAmount
+
+def test_default_initial_amount():
+    wallet = Wallet()
+    assert wallet.balance == 0
+ 
+def test_setting_initial_amount():
+    wallet = Wallet(100)
+    assert wallet.balance == 100
+ 
+def test_wallet_add_cash():
+    wallet = Wallet('o')
+    wallet.add_cash('h')
+    assert wallet.balance == 'oh'
+ 
+def test_wallet_spend_cash():
+    wallet = Wallet(20)
+    wallet.spend_cash(10)
+    assert wallet.balance == 10
+ 
+def test_wallet_spend_cash_raises_exception_on_insufficient_amount():
+    wallet = Wallet(100)
+    # with pytest.raises(InsufficientAmount):
+    wallet.spend_cash(0.845623548161321516812)
+    assert wallet.balance == 100 - 0.845623548161321516812
+										</pre></code>
+									</p>
+                                </div>
+                            </div>
+
+					</section>
+
+				<!-- Footer -->
+				<section id="footer">
+					<div class="inner">
+						<h2 class="major">Get in touch</h2>
+						<p>If you wish to contact me regarding any of the information on this site, please use one of the methods below.</p>
+						<form method="post" action="#">
+							<div class="fields">
+								<div class="field">
+									<label for="name">Name</label>
+									<input type="text" name="name" id="name" />
+								</div>
+								<div class="field">
+									<label for="email">Email</label>
+									<input type="email" name="email" id="email" />
+								</div>
+								<div class="field">
+									<label for="message">Message</label>
+									<textarea name="message" id="message" rows="4"></textarea>
+								</div>
+							</div>
+							<ul class="actions">
+								<li><input type="submit" value="Send Message"/></li>
+							</ul>
+						</form>
+						<ul class="contact">
+							<li class="icon solid fa-home">
+								Chelmsford<br />
+								United Kingdom<br />
+							</li>
+							<li class="icon solid fa-envelope"><a href="mailto:eb23659@essex.ac.uk">eb23659@essex.ac.uk</a></li>
+							<li class="icon brands fa-linkedin"><a href="https://www.linkedin.com/in/elliot-bedworth/" target="_blank">https://www.linkedin.com/in/elliot-bedworth/</a></li>
+						</ul>
+						<ul class="copyright">
+							<li>&copy; All rights reserved.</li><li>Design: <a href="http://html5up.net" target="_blank">HTML5 UP</a></li>
+						</ul>
+					</div>
+				</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="../../assets/js/jquery.min.js"></script>
+			<script src="../../assets/js/jquery.scrollex.min.js"></script>
+			<script src="../../assets/js/browser.min.js"></script>
+			<script src="../../assets/js/breakpoints.min.js"></script>
+			<script src="../../assets/js/util.js"></script>
+			<script src="../../assets/js/main.js"></script>
+
+	</body>
+</html>

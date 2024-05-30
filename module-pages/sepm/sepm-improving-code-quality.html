@@ -1,0 +1,234 @@
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>E-Portfolio | Improving Code Quality</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../../assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="../../assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1><a href="../../index.html">E-Portfolio | <span style="color: #9ed0ff">Elliot Bedworth</span></a></h1>
+						<nav>
+							<a href="#menu">Menu</a>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<div class="inner">
+							<h2>Menu</h2>
+							<ul class="links">
+								<li><a href="../../index.html">Home</a></li>
+								<li><a href="../../about.html">About Me</a></li>
+								<li><a href="../../my-work.html">My Work</a></li>
+								<!-- <li><a href="../../journal.html">Journal</a></li> -->
+							</ul>
+							<a href="#" class="close">Close</a>
+						</div>
+					</nav>
+
+				<!-- Wrapper -->
+					<section id="wrapper">
+						<header>
+							<div class="inner">
+								<h2>Improving Code Quality</h2>
+
+                                <p>
+									Read the resource <a href="https://docslib.org/doc/9751240/writing-clean-and-pythonic-code">'Writing Clean and Pythonic Code'</a>
+									by Mertz (2019) and improve a piece of code I wrote previously. 
+								</p>                                
+							</div>
+						</header>
+
+						<!-- Content -->
+							<div class="wrapper">
+								<div class="inner">
+									<h3>Original Code</h3>
+									<p>
+										I chose to use part of the code that I wrote for one my earliest assignments. My assumption is that quality would have room for 
+										improvement, given my lack of experience at that time. The file is called navigation.py and contained some functionality which 
+										would exist as part of a self-driving car.
+										<pre><code>
+class Direction():
+    """An instruction for navigating along a route.
+
+    Attributes:
+
+        _endLocation    :   Location
+            - The geographic location at which the direction will be end
+        _instruction    :   str
+            - The instruction text
+
+    Methods: 
+
+        endLocation()   :   returns end Location
+        instruction()   :   returns instruction
+    """
+    
+    def __init__(self, endLocation:Location, instruction:str):
+        self._currLocation = currLocation
+        self._endLocation = endLocation
+        self._distanceAway = distanceAway
+        self._instruction = instruction
+
+    def __repr__(self):
+        return (f"{self._instruction}.")
+        
+    @property
+    def endLocation(self)->Location:
+        return self._endLocation
+    
+    @property
+    def instruction(self)->str:
+        return self._instruction
+    
+
+class Route():
+    """A route for navigating between two locations using directions.
+
+    Attributes:
+
+        _startLocation  :   Location
+            - The route starting location
+        _endLocation    :   Location
+            - The route end location
+        _currLocation   :   Location
+            - Current physical location (from GPS)
+        _directions     :   Direction[]
+            - List of directions along route 
+        _totalDist      :   float
+            - Distance remaining along route
+
+    Methods:
+
+        endLocation(newEndLoc)      :   Get or set the end location
+        nextDirection()             :   Get next direction
+        generateRoute(start, end)   :   Create a list of directions to navigate
+        calculateDist(start, end)   :   Calculates the distance between two locations
+        updateRoute(newLocation)    :   Updates the route given a new current location
+    """
+
+    END_OF_ROUTE = "you have reached your destination"
+
+    def __init__(self, endLocation:Location, currLocation:Location):
+        self._endLocation = endLocation
+        self._currLocation = currLocation
+        self._startLocation = self._currLocation
+        self._directions = generateRoute(self._startLocation, self._endLocation)
+        self._totalDist = calculateDist(self._startLocation, self._endLocation)
+
+    @property
+    def endLocation(self)->Location:
+        return self._endLocation
+    
+    @endLocation.setter
+    def endLocation(self, newEndLoc):
+        if type(newEndLoc) == Location:
+            self._endLocation = newEndLoc
+        else:
+            raise TypeError("End location must be a location object")
+    
+    def nextDirecion(self)->str:
+        if len(self._directions) > 1:
+            inDistance = calculateDist(self._currLocation, self._directions[0].endLocation)
+            return f"In {inDistance}, {self._directions[0].instruction}."
+        elif len(self._directions) == 1:
+            inDistance = calculateDist(self._currLocation, self._directions[0].endLocation)
+            return self.END_OF_ROUTE
+        else:
+            return self._END_capitalize()
+										</code></pre>
+									</p>
+									<h3>Code Quality Improvements</h3>
+									<p>
+										The first thing I did was use PyLint to evaluate my code for PEP-8 deviations. I did this using the command<br>
+										<code>pylint navigation.py</code>. The result was a code rating of 0.00/10, and more deviations from PEP-8 
+										than I could fit in a single terminal:
+										<br>
+										<div class="box alt">
+											<div class="row gtr-uniform">
+												<div class="col-12">
+													<span class="image fit"><img src="../../images/module-img/sepm/Unit-9-pylint-output.png" alt="" /></span></div>
+											</div>
+										</div>
+										After running through the long list of issues, correcting them one by one, the code was improved and compliant with PEP-8.
+										<br>
+										<br>
+										<div class="box alt">
+											<div class="row gtr-uniform">
+												<div class="col-12">
+													<span class="image fit"><img src="../../images/module-img/sepm/Unit-9-better-pylint-output.png" alt="" /></span></div>
+											</div>
+										</div>
+										The errors were various things, not only styleguide deviations. The most common issue was trailing whitespace, which is related to 
+										PEP-8. There were some code errors which were also highlighted by VSCode, by means of a colourful underlining of the problematic
+										part of the code. PyLint was useful in that it provided enough information in the terminal output to fix each issue, without further 
+										research being required. 
+									</p>
+                                </div>
+                            </div>
+
+					</section>
+
+				<!-- Footer -->
+				<section id="footer">
+					<div class="inner">
+						<h2 class="major">Get in touch</h2>
+						<p>If you wish to contact me regarding any of the information on this site, please use one of the methods below.</p>
+						<form method="post" action="#">
+							<div class="fields">
+								<div class="field">
+									<label for="name">Name</label>
+									<input type="text" name="name" id="name" />
+								</div>
+								<div class="field">
+									<label for="email">Email</label>
+									<input type="email" name="email" id="email" />
+								</div>
+								<div class="field">
+									<label for="message">Message</label>
+									<textarea name="message" id="message" rows="4"></textarea>
+								</div>
+							</div>
+							<ul class="actions">
+								<li><input type="submit" value="Send Message"/></li>
+							</ul>
+						</form>
+						<ul class="contact">
+							<li class="icon solid fa-home">
+								Chelmsford<br />
+								United Kingdom<br />
+							</li>
+							<li class="icon solid fa-envelope"><a href="mailto:eb23659@essex.ac.uk">eb23659@essex.ac.uk</a></li>
+							<li class="icon brands fa-linkedin"><a href="https://www.linkedin.com/in/elliot-bedworth/" target="_blank">https://www.linkedin.com/in/elliot-bedworth/</a></li>
+						</ul>
+						<ul class="copyright">
+							<li>&copy; All rights reserved.</li><li>Design: <a href="http://html5up.net" target="_blank">HTML5 UP</a></li>
+						</ul>
+					</div>
+				</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="../../assets/js/jquery.min.js"></script>
+			<script src="../../assets/js/jquery.scrollex.min.js"></script>
+			<script src="../../assets/js/browser.min.js"></script>
+			<script src="../../assets/js/breakpoints.min.js"></script>
+			<script src="../../assets/js/util.js"></script>
+			<script src="../../assets/js/main.js"></script>
+
+	</body>
+</html>
